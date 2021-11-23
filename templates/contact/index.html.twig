@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="bg-contact">
+    <div class="container-contact">
+        <div class="container">
+            <div class="section-title">
+                <span>Nous contacter</span>
+                <h2>Nous contacter</h2>
+                <p>En quoi pouvons-nous vous aider ?</p>
+            </div>
+            <div class="row animate fadeInUp">
+                <div class="col-lg-6">
+                    <div class="info-box mb-4">
+                        <i class="bx bx-map"></i>
+                        <h3>Notre adresse</h3>
+                        <p>24 boulevard Pablo Picasso 49000 ANGERS</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="info-box  mb-4">
+                        <i class="bx bx-envelope"></i>
+                        <h3>Nous envoyer un email</h3>
+                        <p>contact@discommentondit.fr</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="info-box  mb-4">
+                        <i class="bx bx-phone-call"></i>
+                        <h3>Nous appeler</h3>
+                        <p><a href="tel:0612345678">06 29 02 54 45</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row animate fadeInUp two">
+                <div class="col-lg-6 ">
+                    <iframe class="mb-4 mb-lg-0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2697.889469498528!2d-0.5251050843748031!3d47.45309397917479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4808787a241b7931%3A0x900d920a6f837b2f!2s24%20Boulevard%20Pablo%20Picasso%2C%2049000%20Angers!5e0!3m2!1sfr!2sfr!4v1625647376421!5m2!1sfr!2sfr"
+                        frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+                </div>
+                <div class="col-lg-6">
+                    {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    {{ form_start(form) }}
+                    <div class="wrap-input validate-input">
+                        {{ form_widget(form.prenom) }}
+                        <span class="focus-input2" data-placeholder="Prénom :*"></span>
+                    </div>
+                    <div class="wrap-input validate-input">
+                        {{ form_widget(form.nom) }}
+                        <span class="focus-input2" data-placeholder="Nom :*"></span>
+                    </div>
+                    <div class="wrap-input validate-input">
+                        {{ form_widget(form.email) }}
+                        <span class="focus-input2" data-placeholder="Merci de saisir votre adresse email :*"></span>
+                    </div>
+                    <div class="wrap-input validate-input">
+                        {{ form_widget(form.content) }}
+                        <span class="focus-input2" data-placeholder="En quoi pouvons-nous vous aider ? :*"></span>
+                    </div>
+                    <div class="container-contact-form-btn">
+                        {{ form_widget(form.submit) }}
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        {# <div class="wrap-contact">
+        </div> #}
+    </div>
+</div>
+{% endblock %}

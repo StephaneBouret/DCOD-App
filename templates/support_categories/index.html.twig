@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - Catégories{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">Application</li>
+            </ol>
+        </div>
+    </section>
+    <section class="category-container">
+        <div class="category-content">
+            <header class="page-header">
+                <h1>Application</h1>
+            </header>
+            <div class="section-one">
+                <section class="section">
+                    <h3 class="section-one-title">Les questions les plus fréquentes</h3>
+                    <ul class="article-list">
+                        <li class="article-list-item">
+                            <i class="fad fa-star"></i>
+                            <a href="{{ path('resetMyPw') }}" class="article-list-link">Comment réinitialiser mon mot de passe ?</a>
+                        </li>
+                        <li class="article-list-item">
+                            <a href="{{ path('whyNoReset') }}" class="article-list-link">Pourquoi mon lien de réinitialisation de mot de passe
+                                ne fonctionne pas ?</a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h3 class="section-one-title">Premiers pas</h3>
+                    <ul class="article-list">
+                        <li class="article-list-item">
+                            <i class="fad fa-star"></i>
+                            <a href="{{ path('register_help') }}" class="article-list-link">M'enregistrer sur l'application</a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h3 class="section-one-title">Mon compte</h3>
+                    <ul class="article-list">
+                        <li class="article-list-item">
+                            <a href="{{ path('myAccount') }}" class="article-list-link">Me connecter à mon compte</a>
+                        </li>
+                        <li class="article-list-item">
+                            <a href="{{ path('disconnect') }}" class="article-list-link">Me déconnecter de mon compte</a>
+                        </li>
+                        <li class="article-list-item">
+                            <a href="{{ path('changeParameters') }}" class="article-list-link">Modifier mes paramètres personnels</a>
+                        </li>
+                        <li class="article-list-item">
+                            <a href="{{ path('changeEmail') }}" class="article-list-link">Changer mon adresse email</a>
+                        </li>
+                        <li class="article-list-item">
+                            <a href="{{ path('changeMyPw') }}" class="article-list-link">Changer mon mot de passe</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

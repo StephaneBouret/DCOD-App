@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog Dis, comment on dit ? - Catégories{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    .breadcrumbs a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+
+    .breadcrumbs h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #545454;
+        margin-bottom: 0;
+    }
+
+    .blog .entry {
+        height: 410px;
+    }
+
+    .blog .entry .entry-background {
+        max-height: 110px;
+    }
+
+    .blog .entry .entry-content p {
+        height: 96px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li>
+                    <a href="{{ path('products') }}">Accueil</a>
+                </li>
+                <li><a href="{{ path('blogpost') }}">Blog</a></li>
+            </ol>
+            <h2>Catégories des sujets</h2>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="section-blog">
+                <h2>Blog</h2>
+                <p>{{ category.name }}</p>
+            </div>
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {% for all in allCategory %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <article class="entry">
+                        {% if all.illustration %}
+                        <div class="entry-background">
+                            <img src="{{ vich_uploader_asset(all, 'imageFile') | imagine_filter('thumb_smallblog') }}"
+                                alt="{{ all.illustration }}" class="img-fluid">
+                        </div>
+                        {% else %}
+                        <div class="entry-background">
+                            <img src="{{ asset('assets/img/empty.webp') }}" alt="Image vide" class="img-fluid">
+                        </div>
+                        {% endif %}
+                        <h2 class="entry-title">
+                            <a href="{{ path('single_post', {'slug' : all.slug }) }}">{{ all.title }}</a>
+                        </h2>
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                        href="{{ path('single_post', {'slug' : all.slug }) }}">{{ all.users.firstname }}
+                                        {{ all.users.lastname|first }}</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                        href="{{ path('single_post', {'slug' : all.slug }) }}"><time>{{ all.createdAt|date('d/m/Y') }}</time></a>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                                        href="{{ path('single_post', {'slug' : all.slug }) }}">{{ all.comments|length }}
+                                        {% if all.comments|length >=2 %} Commentaires{% else %}
+                                        Commentaire{% endif %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry-content">
+                            <p>
+                                {{ all.content|u.truncate(150, '...', false)|raw }}
+                            </p>
+                            <div class="read-more">
+                                <a href="{{ path('single_post', {'slug' : all.slug }) }}">En savoir plus</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="d-flex justify-content-left">
+                {{ knp_pagination_render(allCategory, 'base/pagination.html.twig') }}
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Section -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+</main>
+<script src="{{ asset('assets/js/blog.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+{% endblock %}

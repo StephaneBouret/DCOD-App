@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inscription{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5">
+                    <form method="post">
+                        <h5 class="h3 mb-3 font-weight-normal text-center">S'inscrire</h5>
+                        {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message | raw }}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+                        <div class="form-input">
+                            <label for="inputEmail">Votre email</label>
+                            <input type="email" name="email" id="inputEmail" class="form-control"
+                                placeholder="Votre email :" required autofocus>
+                        </div>
+                        <button class="btn login__sign-in" type="submit">
+                            Valider
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable - Dis, comment on dit ?
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-image: url({{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }});
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #b3b3b3;
+        background-blend-mode: multiply;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container mt-5 mb-5">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div class="col-md-7">
+			<div class="card px-5 py-5">
+				<h2>Page introuvable</h2>
+				<p>Désolé, cette page ne semble pas être accessible pour le moment.</p>
+				<a href="{{ path('home') }}" class="btn btn-info">Revenir à l'accueil</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

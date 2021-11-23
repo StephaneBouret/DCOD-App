@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - Me connecter à mon compte{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">
+                    <a href="{{ path('support_categories') }}">Application</a>
+                </li>
+                <li title="Mon compte">Mon compte</li>
+            </ol>
+        </div>
+    </section>
+    <div class="article-container">
+        <section class="article-sidebar" id="accordionArticle">
+            <section class="section-articles collapsible-sidebar">
+                <h3 class="collapsible-sidebar-title sidenav-title ml-10" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Articles dans cette section
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionArticle">
+                    <ul>
+                        <li>
+                            <a href="#" class="sidenav-item current-article">Me connecter à mon compte</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('disconnect') }}" class="sidenav-item ">Me déconnecter de mon compte</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('changeParameters') }}" class="sidenav-item ">Modifier mes paramètres personnels</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('changeEmail') }}" class="sidenav-item ">Changer mon adresse email</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('changeMyPw') }}" class="sidenav-item ">Changer mon mot de passe</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <article class="article">
+            <header class="article-header">
+                <h1 title="Me connecter à mon compte" class="article-title">Me connecter à mon compte
+                </h1>
+            </header>
+            <section class="article-info">
+                <div class="article-content">
+                    <div class="article-body">
+                        <p><em>Dans cet article nous allons traiter des sujets suivants :&nbsp;</em></p>
+                        <p>
+                            <a href="#firstPart" target="_self">Se connecter avec son email</a>
+                            <br>
+                            <a href="#secondPart" target="_self">Vous n'arrivez pas à vous connecter</a>
+                        </p>
+                        <h2 id="firstPart">
+                            <span class="redColorApp">Se connecter avec son email</span>
+                        </h2>
+                        <ol>
+                            <li>
+                                <span class="color-black">Rendez-vous à l’adresse : <a
+                                        href="https://www.discommentondit.fr/connexion"
+                                        target="_self">https://www.discommentondit.fr/connexion</a></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Saisissez votre adresse mail</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Saisissez votre mot de passe</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Cliquer sur le bouton "<strong>Se connecter</strong>"</span>
+                            </li>
+                        </ol>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister7.jpg') }}" alt="">
+                        </p>
+                        <p>&nbsp;</p>
+                        <h2 id="secondPart">
+                            <span class="redColorApp">Vous n'arrivez pas à vous connecter</span>
+                        </h2>
+                        <p>
+                            <span class="color-black">Il est possible que le message suivant s'affiche "Identifiants
+                                invalides.", ceci est généralement dû à l’une des 3 raisons suivantes :
+                            </span>
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black">L'email que vous avez saisi comporte une erreur,</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Le mot de passe que vous avez renseigné est erroné,</span>
+                                <ul style="margin-top: 0; margin-bottom: 0;">
+                                    <li>vous pouvez vérifier votre mot de passe en cliquant sur l'icône représentant un
+                                        "oeil" à droite du champ réservé à la saisi de votre mot de passe</li>
+                                    <li>
+                                        <span class="color-black">vous pouvez réinitialiser
+                                            votre mot de passe en cliquant sur <a
+                                                href="https://www.discommentondit.fr/mot-de-passe-oublie"
+                                                target="_blank" rel="noopener">mot de passe oublié</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="color-black">Vous tentez de vous connecter à l’aide d’une adresse email qui
+                                    n’est pas associée à un compte Dis, comment on dit ?. Si vous possédez une autre
+                                    adresse
+                                    email, essayez de vous connecter avec.</span>
+                            </li>
+                        </ul>
+                        <p>Rappel : si vous souhaitez vous déconnecter de votre compte Dis, comment on dit ?, consultez
+                            l'article
+                            dédié <a href="{{ path('disconnect') }}" target="_self">Me déconnecter de mon compte</a>
+                        </p>
+                        <p>Si vous avez suivi toutes ces instructions et que malgré cela vous ne parvenez pas à vous
+                            enregistrer, <a href="https://www.discommentondit.fr/nous-contacter" target="_blank"
+                                rel="noopener noreferrer">contactez-nous</a>.</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+<script src="{{ asset('assets/js/resize.js') }}" defer></script>
+{% endblock %}

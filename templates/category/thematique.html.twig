@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thématiques
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+	body {
+		position: relative;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		background-color: #FFFFFF;
+	}
+
+	.filter {
+		display: block;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 10vh;
+	}
+
+	.card {
+		flex-direction: row;
+	}
+</style>
+{% endblock %}
+{% block body %}
+<section class="main-container topics-container">
+	<div class="location">
+		{% for label, messages in app.flashes %}
+		{% for message in messages %}
+		<div class="alert alert-{{ label }} alert-dismissible fade show mt-3 text-center container" id="flashMessage"
+			role="alert">
+			{{ message | raw }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		{% endfor %}
+		{% endfor %}
+		<div class="row">
+			<div class="col-md-3 thematique-info">
+				<h1 class="title-home title-topics">Nos thématiques</h1>
+				{{ form_start(form, {attr: {class: 'filter', id: 'filters'}}) }}
+				<h4 class="red">Recherche par mot :</h4>
+				{{ form_row(form.product) }}
+				<h4 class="red">Recherche par thème :</h4>
+				{{ form_row(form.tags) }}
+				<h4 class="red">Recherche phonologique :</h4>
+				{{ form_row(form.string) }}
+				<h4 class="red">Filtre par niveau :</h4>
+				{{ form_row(form.levels) }}
+				<button type="button" class="btn btn-secondary mb-3 clear-data">
+					<a href="{{ path('category_filter') }}">
+						Effacer
+					</a>
+				</button>
+				{{ form_end(form) }}
+			</div>
+			<div class="col-md-9" id="content">
+				<div class="row portfolio-container">
+					{% if products is empty %}
+					<section class="error-404 d-flex flex-column align-items-center justify-content-center">
+						<h2>Il n'existe aucune image suite à votre requête</h2>
+						<img src="{{asset('assets/img/not-found.svg')}}" class="img-fluid py-5" alt="Page non trouvée">
+					</section>
+					{% endif %}
+					{% for product in products %}
+					{% include "category/single_product.html.twig" with {product: product} only %}
+					{% endfor %}
+				</div>
+				<div class="d-flex justify-content-left">
+					{{ knp_pagination_render(products, 'base/pagination.html.twig') }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+	<i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/portfolio.js') }}" defer></script>
+<script src="{{ asset('assets/isotope-layout/isotope.pkgd.min.js') }}" defer></script>
+{% endblock %}

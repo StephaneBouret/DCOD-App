@@ -1,0 +1,60 @@
+# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
+    filter_sets:
+        # name our filter set "miniature"
+        miniature:
+            # adjust the image quality to 75%
+            quality: 75
+            filters:
+                # use and setup the "thumbnail" filter
+                thumbnail:
+                    # set the thumbnail size to "300x250" pixels
+                    size: [320, 250]
+                    mode: outbound
+        thumb_indexblog:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [746, 497]
+                    mode: outbound
+        thumb_smallblog:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [416, 234]
+                    mode: outbound
+        thumb_mediumblog:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [856, 482]
+                    mode: outbound
+        resize:
+            filters:
+                # use and setup the "downscale" filter
+                downscale:
+                    # input 3960x2560px -> output 320x250px
+                    max: [320, 250]
+        show:
+            filters:
+                # use and setup the "downscale" filter
+                downscale:
+                    max: [900, 600]
+        my_ratio_down_scale_filter:
+            filters:
+                # use and setup the "scale" filter
+                scale:
+                    # given 1920x1600px -> output 960x800px (relative down-scale)
+                    to: 0.5
+        my_ratio_down_scale_filter_lower:
+            filters:
+                # use and setup the "scale" filter
+                scale:
+                    to: 0.9
+        my_widen_filter:
+            filters:
+                # use and setup the "relative_resize" filter
+                relative_resize:
+                    widen: 432.75

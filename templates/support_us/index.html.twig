@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous soutenir{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<section id="support-us" class="support-us">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <span>Nous soutenir</span>
+            <h2>Nous soutenir</h2>
+            <p>Plusieurs solutions pour soutenir Dis, comment on dit ? sont possibles... à chacun son niveau
+                d'engagement</p>
+            <p>Vous pouvez faire connaître l'association en en parlant autour de vous, et en partageant le lien de notre
+                site internet sur les réseaux sociaux.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="icon">
+                        <a href="https://www.helloasso.com/associations/dis-comment-on-dit/adhesions/adhesion-association-dis-comment-on-dit/"
+                            target="_blank" rel="noreferrer noopener">
+                            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="none" stroke-width="0" fill="#f5f5f5"
+                                    d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174">
+                                </path>
+                                <i class='bx bx-donate-heart'></i>
+                            </svg>
+                        </a>
+                    </div>
+                    <h4><a href="https://www.helloasso.com/associations/dis-comment-on-dit/adhesions/adhesion-association-dis-comment-on-dit/"
+                            target="_blank" rel="noreferrer noopener">Devenir adhérent</a></h4>
+                    <p>Ensemble, on va plus loin !</p>
+                    <p>Devenir adhérent, c'est le premier pas à faire. C'est un soutien indispensable qui permet de
+                        renforcer la crédibilité de l'association et d'ouvrir de nouvelles portes à son développement.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                data-aos-delay="200">
+                <div class="icon-box iconbox-red">
+                    <div class="icon">
+                        <a href="https://www.helloasso.com/associations/dis-comment-on-dit/formulaires/2/widget"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="none" stroke-width="0" fill="#f5f5f5"
+                                    d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426">
+                                </path>
+                                <i class='bx bx-gift'></i>
+                            </svg>
+                        </a>
+                    </div>
+                    <h4><a href="https://www.helloasso.com/associations/dis-comment-on-dit/formulaires/2/widget"
+                            target="_blank" rel="noopener noreferrer">Faire un don</a></h4>
+                    <p>Vous souhaitez soutenir notre association !</p>
+                    <p>Vos dons nous permettent de consolider la caisse de l'association et d'améliorer son
+                        développement. Grâce à eux, nous investissons pour vous offrir des activités de qualités, dans
+                        un cadre de qualité.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+                data-aos-delay="300">
+                <div class="icon-box iconbox-yellow">
+                    <div class="icon">
+                        <a href="{{ path('become_partner') }}">
+                            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="none" stroke-width="0" fill="#f5f5f5"
+                                    d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426">
+                                </path>
+                            </svg>
+                            <i class='bx bxs-network-chart'></i>
+                        </a>
+                    </div>
+                    <h4><a href="{{ path('become_partner') }}">Devenir partenaire</a></h4>
+                    <p>Chefs d'entreprise, responsables de collectivité et d'association, quelques soient vos objectifs
+                        et vos moyens, nous vous proposons de collaborer sur un projet commun qui ait du sens pour vous.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-info">
+                        <h3>Dis, comment on dit ?</h3>
+                        <p>
+                            24 boulevard Pablo Picasso <br>
+                            49000 ANGERS<br><br>
+                            <strong>Téléphone :</strong> 06 29 02 54 45<br>
+                            <strong>Email :</strong> contact@discommentondit.fr<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-google-plus-circle"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('home') }}">Accueil</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('about') }}">Qui sommes-nous</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('picture_book') }}">Nos imagiers</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('legal-notices') }}">Mentions
+                                légales</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('prevacy-policy') }}">Politique de
+                                confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Nos services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('support') }}">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            Association Dis, comment on dit ? - 2021 - Tous droits réservés
+        </div>
+        <div class="credits">
+            Réalisé par <a href="https://stephanebouretnouhin.web.app/" target="_blank">SB</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/main.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ category.slug }}
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+	body {
+		position: relative;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		background-color: #FFFFFF;
+	}
+
+	.main-container {
+		padding-top: 0;
+	}
+
+	.card {
+		border: 0;
+		border-radius: 0;
+	}
+
+	.card-img,
+	.card-img-bottom,
+	.card-img-top {
+		border-radius: 0;
+	}
+</style>
+{% endblock %}
+{% block body %}
+<section id="list-categories" class="list-categories">
+	<div class="container">
+		<div class="section-title">
+			<h2>{{ category.name|capitalize }}</h2>
+		</div>
+	</div>
+</section>
+<section class="main-container">
+	<div class="location">
+		<div class="container">
+			<div class="row portfolio-container">
+				{% for list in listCategory %}
+				<div class="col-lg-4 col-md-6 portfolio-item">
+					<div class="portfolio-wrap shadow-1-strong">
+						<img src="{{ vich_uploader_asset(list, 'imageFile') | imagine_filter('my_widen_filter') }}"
+							class="img-fluid" alt="">
+						<div class="portfolio-info">
+							<h4>{{ list.name }}</h4>
+							<p>{{ list.level }}</p>
+							<div class="portfolio-links">
+								<a href="{{ path('product', {'slug' : list.slug }) }}" title="Voir le détail"><i
+										class="bx bx-link"></i>
+								</a>
+								<form method="POST" action="{{ path('addList') }}">
+									<input type="text" name="id" value="{{ list.id }}" style="display: none">
+									<button title="Ajouter à Ma liste">
+										<i class='bx bx-plus-circle'></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+	<i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/portfolio.js') }}" defer></script>
+<script src="{{ asset('assets/isotope-layout/isotope.pkgd.min.js') }}" defer></script>
+{% endblock %}

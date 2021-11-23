@@ -1,0 +1,20 @@
+<div class="col-lg-4 col-md-6 portfolio-item">
+	<div class="portfolio-wrap shadow-1-strong">
+		<img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('my_widen_filter') }}" class="img-fluid"
+			alt="">
+		<div class="portfolio-info">
+			<h4>{{ product.name }}</h4>
+			<p>{{ product.level }}</p>
+			<div class="portfolio-links">
+				<form method="POST" action="{{ path('addList') }}">
+					<input type="text" name="id" value="{{ product.id }}" style="display: none">
+					<button title="Ajouter à Ma liste">
+						<i class='bx bx-plus-circle'></i>
+					</button>
+				</form>
+				<a href="{{ path('product', {'slug' : product.slug }) }}" title="Voir le détail"><i
+						class="bx bx-link"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

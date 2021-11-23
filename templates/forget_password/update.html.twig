@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5 position-relative">
+                    {% for message in app.flashes('notice') %}
+                    <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+                    <h5 class="h3 mb-3 font-weight-normal text-center">Réinitialiser mon mot de passe</h5>
+                    {{ form(form) }}
+                    <div class="pswd_info d-none">
+                        <div class="text-center"><span class="arrow-password"></span></div>
+                        <div class="advice-password">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-password bg-success"
+                                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <hr>
+                            <p class="mb-0">Votre mot de passe doit contenir au moins :</p>
+                            <ul>
+                                <li>
+                                    <span id="letter" class="mr-2 invalid sprite-align"></span>Un caractère en minuscule
+                                </li>
+                                <li>
+                                    <span id="capital" class="mr-2 invalid sprite-align"></span>Un caractère en
+                                    majuscule
+                                </li>
+                                <li>
+                                    <span id="special" class="mr-2 invalid sprite-align"></span>Un caractère spécial (!,
+                                    ?,
+                                    $, ", ...) </li>
+                                <li>
+                                    <span id="number" class="mr-2 invalid sprite-align"></span>Un chiffre </li>
+                                <li>
+                                    <span id="length" class="mr-2 invalid sprite-align"></span>Entre 12 et 32 caractères
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouveau sujet{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    .breadcrumbs a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+
+    .breadcrumbs h2 {
+        font-size: 28px;
+        font-weight: 700;
+        /* color: #545454; */
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li>
+                    <a href="{{ path('products') }}">Accueil</a>
+                </li>
+                <li><a href="{{ path('blogpost') }}">Blog</a></li>
+            </ol>
+            <h2>Créer un nouveau sujet</h2>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+                <div class="post-form">
+                    <h4>Créer un sujet</h4>
+                    <p>Les champs obligatoires sont marqués d'un *.</p>
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col form-group">
+                            {{ form_row(form.title) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            {{ form_row(form.content) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            {{ form_row(form.categoryPost) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            {{ form_row(form.imageFile) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+    </section>
+    <!-- End Blog Section -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+</main>
+<script src="{{ asset('assets/js/blog.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5">
+                    <h2>Mon compte</h2>
+                    {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    Bienvenue
+                    {{ app.user.firstname }}
+                    dans votre compte.<br />
+                    C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+                    <hr>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
+                        <div class="col mb-4">
+                            <div class="card dropdownCard">
+                                <div class="card-body px-0">
+                                    <a href="{{ path('account_password') }}" class="insideCard-item">
+                                        <span class="d-inline-block text-center">
+                                            <i class="icon-app icon-password font-24 align-middle"></i>
+                                        </span>
+                                        Modifier mon mot de passe
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card dropdownCard">
+                                <div class="card-body px-0">
+                                    <a href="{{ path('account_edit') }}" class="insideCard-item">
+                                        <span class="d-inline-block text-center">
+                                            <i class="icon-app icon-setting font-24 align-middle"></i>
+                                        </span>
+                                        Mon compte
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thématiques
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+	body {
+		position: relative;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	.card {
+		background-color: #181818;
+		border-radius: 6px;
+	}
+
+	.grid {
+		display: grid;
+		grid-gap: 20px;
+		grid-template-columns: repeat(4, minmax(100px, 1fr));
+		grid-auto-rows: 23vh;
+	}
+
+	@media (max-width: 1140px) {
+		.grid {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns: repeat(3, minmax(100px, 1fr));
+		}
+	}
+
+	@media (max-width: 900px) {
+		.grid {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns: repeat(3, minmax(100px, 1fr));
+		}
+	}
+
+	@media (max-width: 768px) {
+		.grid {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns: repeat(2, minmax(100px, 1fr));
+		}
+	}
+
+	@media (max-width: 500px) {
+		.grid {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns: repeat(1, 1fr);
+			text-align: center;
+		}
+
+		.hover-overlay:hover {
+			transform: scale(1.2);
+			transition: transform 0.3s;
+			z-index: 100;
+		}
+	}
+
+	.filter {
+		display: block;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 10vh;
+	}
+</style>
+{% endblock %}
+{% block body %}
+<section class="main-container">
+	<div class="location">
+		<h1 class="title-home">Nos thématiques</h1>
+		<div class="row">
+			<div class="col-md-3">
+				{% set var = page %}
+				{{ form_start(form, {attr: {class: 'filter', id: 'filters'}}) }}
+				{{ form_row(form.string) }}
+				<h4 class="red">Niveaux :</h4>
+				{{ form_row(form.levels) }}
+				<h4 class="red">Mots clés des thématiques :</h4>
+				{{ form_row(form.tags) }}
+				<h4 class="red">Thématiques :</h4>
+				{{ form_row(form.categories) }}
+				{{ form_row(form.page, {value: var}) }}
+
+				{{ form_end(form) }}
+			</div>
+			<div class="col-md-9" id="content">
+				<div class="grid">
+				{% if total == 0 %}
+				<p>Il n'existe aucune image suite à votre requête</p>
+				{% endif %}
+					{% for product in products %}
+					{% include "category/single_product.html.twig" with {product: product} only %}
+					{% endfor %}
+				</div>
+				{# On crée des variables personnalisées #}
+				{% set queryParams = app.request.query.all %}
+				{% set queryString = queryParams|filter((v, k) => k != "page")|url_encode %}
+				<nav>
+					<ul class="pagination">
+						{% set pages = (total / limit)|round(0, 'ceil') %}
+						<li class="page-item {{ (page == 1) ? 'disabled' : '' }}">
+							<a href="?page=1&{{queryString}}" class="page-link" tabindex="-1" aria-disabled="true">
+								<i class="fas fa-step-backward"></i>
+							</a>
+						</li>
+						<li class="page-item {{ (page == 1) ? 'disabled' : '' }}">
+							<a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{queryString}}" class="page-link">
+								<i class="fas fa-angle-left"></i>
+							</a>
+						</li>
+						{% for item in 1..pages %}
+						<li class="page-item {{ (page == item) ? 'active' : '' }}">
+							<a href="?page={{ item }}&{{queryString}}" class="page-link">{{ item }}</a>
+						</li>
+						{% endfor %}
+						<li class="page-item {{ (page == pages) ? 'disabled' : '' }}">
+							<a href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}&{{queryString}}"
+								class="page-link">
+								<i class="fas fa-angle-right"></i>
+							</a>
+						</li>
+						<li class="page-item {{ (page == pages) ? 'disabled' : '' }}">
+							<a href="?page={{ pages }}&{{queryString}}" class="page-link">
+								<i class="fas fa-step-forward"></i>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

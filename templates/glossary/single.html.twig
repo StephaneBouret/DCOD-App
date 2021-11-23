@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des imagiers{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #f7f7f7;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs-index" class="breadcrumbs-index">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Index</h2>
+                <ol>
+                    <li>
+                        <a href="{{ path('glossary') }}">Index des imagiers</a>
+                    </li>
+                    <li>
+                        Lettre {{ singleLetter.letter }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section id="index" class="index" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tous les mots de nos imagiers</h2>
+                <p>Retrouvez les mots de nos imagiers par ordre alphabétique</p>
+            </div>
+            <div class="glossaire-style big">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div id="container-trigger" class="container-fluid">
+                        <button id="glossaire-trigger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span id="togglerIcon" class="navbar-toggler-icon">Filtrer</span>
+                        </button>
+                        <div class="collapse navbar-collapse switchcontent" id="navbarNav">
+                            <ul class="navbar-nav">
+                                {% set currentLastPartUrl = app.request.requesturi | split('/') | last %}
+                                {% for alf in alphabet %}
+                                <li class="nav-item">
+                                    <a class="nav-link {{ alf.slug == currentLastPartUrl ? 'active' }}"
+                                        aria-current="page"
+                                        href="{{ path('single_glossary', {'slug' : alf.slug }) }}">{{ alf.letter | upper }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="content-search__results">
+                    <div class="content-search__results__current-letter">
+                        {{ singleLetter.letter }}
+                    </div>
+                    <div class="content-search__results__content">
+                        {% for dsl in detailSingleLetter %}
+                        <div class="content-search__results__item">
+                            {{ dsl.title }} - page {{ dsl.page }} - <span class="colorGrey">Tome {{ dsl.tome }}
+                                {{ dsl.level }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/main.js') }}" defer></script>
+{% endblock %}

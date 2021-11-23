@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - M'enregistrer{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">
+                    <a href="{{ path('support_categories') }}">Application</a>
+                </li>
+                <li title="Premiers pas">Premiers pas</li>
+            </ol>
+        </div>
+    </section>
+    <div class="article-container">
+        <section class="article-sidebar" id="accordionArticle">
+            <section class="section-articles collapsible-sidebar">
+                <h3 class="collapsible-sidebar-title sidenav-title ml-10" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Articles dans cette section
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionArticle">
+                    <ul>
+                        <li>
+                            <a href="#" class="sidenav-item current-article">M'enregistrer sur l'application</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <article class="article">
+            <header class="article-header">
+                <h1 title="M'enregistrer sur l'application" class="article-title">M'enregistrer sur l'application
+                </h1>
+            </header>
+            <section class="article-info">
+                <div class="article-content">
+                    <div class="article-body">
+                        <p>Avant de pouvoir utiliser l'application, vous devez enregistrer votre compte.<br>Cet article
+                            reprend les différentes façons de créer son compte Dis, comment on dit ?.</p>
+                        <p>&nbsp;</p>
+                        <p>
+                            <a href="#firstPart" target="_self">Vous enregistrer suite à
+                                l'invitation de l'administrateur</a>
+                            <br>
+                            <a href="#secondPart" target="_self">Vous enregistrer via la page
+                                d'inscription du compte</a>
+                        </p>
+                        <h2 id="firstPart">
+                            <span class="redColorApp">Vous enregistrer suite à
+                                l'invitation de l'administrateur</span>
+                        </h2>
+                        <ul>
+                            <li>
+                                <span class="color-black">Cliquez sur "valider votre compte"</span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister1.jpg') }}" alt="" style="width: 400px;">
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black">Renseignez votre adresse email communiquée à
+                                    l'administrateur</span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister2.jpg') }}" alt="" style="width: 400px;">
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black">Consultez à nouveau votre boîte mail</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Cliquez sur "valider votre inscription"</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Attention ! Pour des raisons de sécurité, le lien a une
+                                    validité de <strong>3 heures</strong></span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister3.jpg') }}" alt="" style="width: 400px;">
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black">Renseignez votre mot de passe</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Votre compte est désormais activé, vous pouvez à présent vous
+                                    connecter</span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister4.jpg') }}" alt="" style="width: 400px;">
+                        </p>
+                        <p>&nbsp;</p>
+                        <h2 id="secondPart">
+                            <span class="redColorApp">Vous enregistrer via la page Inscription</span>
+                        </h2>
+                        <p>&nbsp;</p>
+                        <p>Vous avez la possibilité de vous enregistrer via la page Inscription.</p>
+                        <p>&nbsp;</p>
+                        <p>Via le lien lien suivant: <a
+                                href="https://www.discommentondit.fr/inscription">https://www.discommentondit.fr/inscription</a>
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black">Vous devez respecter toutes les étapes de la procédure
+                                    précédente</span>
+                            </li>
+                        </ul>
+                        <p>Si vous avez suivi toutes ces instructions et que malgré cela vous ne parvenez pas à vous
+                            enregistrer, <a href="https://www.discommentondit.fr/nous-contacter" target="_blank"
+                                rel="noopener noreferrer">contactez-nous</a>.</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+<script src="{{ asset('assets/js/resize.js') }}" defer></script>
+{% endblock %}

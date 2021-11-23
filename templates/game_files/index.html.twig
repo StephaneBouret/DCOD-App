@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux de langage{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<section id="games" class="games">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <span>Nos jeux de langage</span>
+            <h2>Nos jeux de langage</h2>
+            <p>Vous retrouvez sur cette page différents jeux de langage répartis par thème : jeux de loto, jeux
+                de l'oie, jeux sur les intrus.</p>
+            <p>Ils ne sont pas exhaustifs ; des gabarits vous sont proposés afin que vous puissiez à l'aide des
+                images présentes dans cette application, construire vos propres jeux.</p>
+            <p>Vous pouvez nous soumettre vos demandes ou suggestions en cliquant sur le lien ci-dessous.</p>
+            <div class="text-center mt-2" data-aos="zoom-in">
+                <a class="cta-game-btn" href="{{ path('contact') }}">Vos suggestions</a>
+            </div>
+        </div>
+        <div class="row" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-games-flters">
+                    <li data-filter="*" class="filter-active">Tous</li>
+                    <li data-filter=".loto">Loto</li>
+                    <li data-filter=".oie">Oie</li>
+                    <li data-filter=".intrus">Intrus</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row portfolio-games-container" data-aos="fade-up" data-aos-delay="300">
+            {% for game in games %}
+            <div class="col-lg-4 col-md-6 portfolio-games-item {{ game.category }}">
+                <div class="portfolio-wrap">
+                    <img src="{{ vich_uploader_asset(game, 'imageFile') }}" class="img-fluid" alt="">
+                    <div class="portfolio-games-info">
+                        <h4>{{ game.name }}</h4>
+                        <p>Jeu de {{ game.category }}</p>
+                        <div class="portfolio-games-links">
+                            <a href="{{ vich_uploader_asset(game, 'imageFile') }}" data-gallery="portfolioGallery"
+                                class="portfolio-lightbox" title="{{ game.name }}"><i class="bx bx-plus"></i></a>
+                            <form method="POST" action="{{ path('downloadPDF') }}">
+                                <input type="text" name="id" value="{{ game.id }}" style="display: none">
+                                <button title="Télécharger le fichier">
+                                    <i class="bx bx-link"></i>
+                                </button>
+                            </form>
+                            {# <a href="{{ vich_uploader_asset(game, 'pdfFile') }}" title="Télécharger le fichier"
+                                target="_blank"><i class="bx bx-link"></i></a> #}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<script src="{{ asset('assets/js/game.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+<script src="{{ asset('assets/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('assets/isotope-layout/isotope.pkgd.min.js') }}" defer></script>
+<script defer>
+    const lightbox = GLightbox({
+        selector: '.portfolio-lightbox'
+    });
+</script>
+{% endblock %}

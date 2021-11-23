@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer mon compte{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5">
+                    <h2>Gérer mon compte</h2>
+                    {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    <br />
+                    <div class="row sub-nav-page">
+                        <div class="col-md-11 ps-0">
+                            <ul class="nav sub-nav-content mt-1 justify-content-start">
+                                <li class="nav-item active">
+                                    <a href="#" target="_self" class="nav-link grey-dark">
+                                        Mofifier mon compte
+                                        <span class="hover-link anim-up animated slideInUp"></span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ path('account') }}" target="_self" class="nav-link grey-dark">
+                                        Retour
+                                        <span class="hover-link anim-up animated slideInUp"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div>
+                                <h1 class="black text-uppercase font-xl grey-dark font-open-sans mt-53">
+                                    Informations personnelles
+                                </h1>
+                                {{ form_start(form) }}
+                                <div class="row mt-5">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-4">
+                                            <div class="effect input-effect position-relative">
+                                                {{ form_label(form.lastname, 'Votre nom :', {'label_attr': {'class': 'color-branding'}})
+                                                }}
+                                                {{ form_widget(form.lastname, {'attr': {'class': 'form-control form-register effect-17 has-content'}})
+                                                }}
+                                                <span class="focus-border bg-branding"></span>
+                                                <div class="icon-user">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-4">
+                                            <div class="effect input-effect position-relative">
+                                                {{ form_label(form.firstname, 'Votre prénom :', {'label_attr': {'class': 'color-branding'}})
+                                                }}
+                                                {{ form_widget(form.firstname, {'attr': {'class': 'form-control form-register effect-17 has-content'}})
+                                                }}
+                                                <span class="focus-border bg-branding"></span>
+                                                <div class="icon-user">
+                                                    <i class="fad fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-4">
+                                            <div class="effect input-effect position-relative">
+                                                {{ form_label(form.email, 'Votre email :', {'label_attr': {'class': 'color-branding'}})
+                                                }}
+                                                {{ form_widget(form.email, {'attr': {'class': 'form-control form-register effect-17 has-content'}})
+                                                }}
+                                                <span class="focus-border bg-branding"></span>
+                                                <div class="icon-user">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-4">
+                                            <div class="effect input-effect position-relative">
+                                                <span class="font-m bold link-modal-email cursor" role="button"
+                                                    tabindex="0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Modifier votre email
+                                                    <i class="fas fa-angle-right"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-4">
+                                            <div class="effect input-effect position-relative">
+                                                {{ form_label(form.phone_number, 'Votre téléphone :', {'label_attr': {'class': 'color-branding'}})
+                                                }}
+                                                {{ form_widget(form.phone_number, {'attr': {'class': 'form-control form-register effect-17 has-content'}})
+                                                }}
+                                                <span class="focus-border bg-branding"></span>
+                                                <div class="icon-user">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modification de votre email</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                Renseignez votre nouvelle adresse email. Ce nouvel email sera votre identifiant pour
+                                vous
+                                connecter à l'application.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{ form_start(form2) }}
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="effect input-effect">
+                                    {{ form_errors(form2.new_email) }}
+                                    {{ form_widget(form2.new_email) }}
+                                </div>
+                                <div class="effect input-effect">
+                                    {{ form_widget(form2.password_for_email) }}
+                                </div>
+                                <div class="effect input-effect">
+                                    {{ form_widget(form2.submit) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form2) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    {# <button type="button" class="btn btn-primary">Modifier mon email</button> #}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

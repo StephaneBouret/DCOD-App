@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5">
+                    {% for message in app.flashes('notice') %}
+                    <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+                    <form method="post">
+                        <h5 class="h3 mb-3 font-weight-normal text-center">Réinitialiser mon mot de passe</h5>
+                        <div class="form-input">
+                            <label for="inputEmail">Votre email</label>
+                            <input type="email" name="email" id="inputEmail" class="form-control"
+                                placeholder="Votre email :" required autofocus>
+                        </div>
+
+                        <button class="btn login__sign-in" type="submit">
+                            Valider
+                        </button>
+                        <hr>
+                        <p class="text-center">Ou souhaitez-vous
+                            <a href="{{ path('app_login') }}">vous connecter ?</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

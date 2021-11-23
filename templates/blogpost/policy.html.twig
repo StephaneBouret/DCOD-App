@@ -1,0 +1,229 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charte des commentaires aux publications{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    .breadcrumbs a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+
+    .breadcrumbs h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #545454;
+    }
+
+    .blog .entry .entry-title {
+        color: #545454;
+    }
+
+    .blog .entry .entry-content h3 {
+        font-size: 22px;
+        margin-top: 30px;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li>
+                    <a href="{{ path('products') }}">Accueil</a>
+                </li>
+                <li><a href="{{ path('blogpost') }}">Blog</a></li>
+            </ol>
+            <h2>Charte des commentaires aux publications</h2>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+                {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+                <div class="col-lg-9 entries">
+                    <article class="entry entry-single">
+                        <h2 class="entry-title">
+                            Retrouvez ci-dessous la charte des commentaires aux publications
+                        </h2>
+                        <div class="entry-content">
+                            <p>
+                                Vous êtes nombreux à contribuer, débattre et donner votre avis sur nos différents
+                                contenus et nous sommes heureux de recevoir vos contributions et réactions qui
+                                enrichissent nos publications.
+                            </p>
+                            <p>
+                                Afin que cet espace reste un lieu d'échange et de dialogue respectueux, découvrez les
+                                critères de modération appliqués aux commentaires.
+                            </p>
+                            <h3>
+                                1. A quoi servent les commentaires ?
+                            </h3>
+                            <p>
+                                Les commentaires permettent aux lecteurs du site et de l'application Dis, comment on dit
+                                ? de donner leur point de point de vue et d'enrichir les débats et discussions relatifs
+                                au contenu sur lequel ils réagissent. Chaque contribution est encouragée dans un esprit
+                                de débat constructif et dans le respect de la liberté d'expression. L'usage de la langue
+                                française et d'une syntaxe appropriée est fortement recommandé afin de diffuser un
+                                message clair et facilement compréhensible.
+                            </p>
+                            <h3>2. Qui peut écrire un commentaire ?</h3>
+                            <p>
+                                Toute personne disposant d'un compte numérique sur le site ou l'application Dis, comment
+                                on dit ? peut déposer un commentaire à la suite d'un contenu publié. La contribution
+                                apparaîtra après modération et sera associée au pseudonyme de l'auteur et la date de
+                                publication. Il est important de noter que les pseudonymes sont soumis aux mêmes
+                                critères de modération que les commentaires.
+                            </p>
+                            <h3>3. Y a-t-il un délai de publication ?</h3>
+                            <p>
+                                Oui, chaque commentaire est vérifié par les équipes de modération avant d'être publié.
+                                Celles-ci s'assurent du caractère licite de la teneur des propos afin de procéder à la
+                                mise en ligne. Le délai peut ainsi durer de quelques secondes à plusieurs minutes.
+                            </p>
+                            <h3>4. Dans quels cas un commentaire peut-il être supprimé ?</h3>
+                            <p>
+                                Les commentaires doivent être respectueux et conformes. Ainsi seront supprimés ou non
+                                publiés :
+                            </p>
+                            <p>
+                                . les propos contraires à l'ordre public et aux bonnes moeurs, à caractère nuisible,
+                                menaçant, abusif, constitutif de harcèlement, vulgaire, obscène, haineux ;
+                            </p>
+                            <p>
+                                . les contributions insultantes, diffamatoires, racistes, sexistes, discriminantes ou
+                                misogynes ;
+                            </p>
+                            <p>
+                                . les incitations aux crimes, aux délits ou au suicide ;
+                            </p>
+                            <p>
+                                . les incitations au tabagisme, à la consommation d'alcool ou à la consommation de
+                                substances faisant l'objet d'une interdiction législative ;
+                            </p>
+                            <p>
+                                . les contributions à caractères politiques ou religieux ;
+                            </p>
+                            <p>
+                                . les contributions portant atteinte d'une quelconque manière aux mineurs ;
+                            </p>
+                            <p>
+                                . les contributions susceptibles de dévaloriser ou ridiculiser une personnalité, un
+                                utilisateur ou toute autre personne. Les propos peuvent être critiques
+                                dans la mesure où ils sont argumentés et portent sur un fait et non une personne.
+                            </p>
+                            <p>
+                                . les propos agressifs, dirigés à l'encontre d'une marque, d'un produit, d'un organisme
+                                ou d'une personne ;
+                            </p>
+                            <p>
+                                . les contributions dévoilant des coordonnées personnelles, telles que les nom et
+                                prénom, l'adresse postale, l'email, le numéro de téléphone ou toute autre information
+                                permettant l'identification manifeste d'un individu ;
+                            </p>
+                            <p>
+                                . les propos incompréhensibles, par leur grammaire, syntaxe, ou l'usage d'une langue ou
+                                d'un style de langage ne permettant pas une compréhension immédiate du propos ;
+                            </p>
+                            <p>
+                                . les contributions promotionnelles et à caractère publicitaire ;
+                            </p>
+                            <p>
+                                . les liens vers des sites internet ;
+                            </p>
+                            <p>
+                                . les commentaires en réponse à une contribution qui aurait été supprimée pour l'une des
+                                raisons précédemment citées.
+                            </p>
+                            <p>
+                                Les propos tenus par un utilisateur dont le pseudonyme serait usurpé, irrespectueux ou
+                                tombant dans l'une des catégories évoquées ci-dessus seront également supprimés ou non
+                                publiés.
+                            </p>
+                            <p>
+                                Les équipes de modération de Dis, comment on dit ? se réservent le droit de ne pas
+                                publier ou de supprimer tout commentaire qu'elles considéreraient comme déplacé ou
+                                contraire à l'esprit et aux valeurs du site. En cas d'abus répétés ou de multiplication
+                                de contributions inappropriées, les utilisateurs pourront se voir avertir d'une
+                                éventuelle suspension de leur compte.
+                            </p>
+                            <h3>5. Mon commentaire n'a pas été publié, que faire ?</h3>
+                            <p>
+                                Si votre commentaire n'apparaît pas en ligne immédiatement, nous vous conseillons de
+                                patienter quelques minutes afin qu'il soit traité par les équipes de modération. Si
+                                après ce délai votre commentaire n'a pas été publié, veuillez vous assurer que la teneur
+                                des propos utilisés respecte les règles d'expression précédemment citées.
+                            </p>
+                            <p>
+                                Si votre commentaire a été publié en réponse à un commentaire qui a été supprimé, il
+                                sera également non publié ou supprimé afin de garder une cohérence dans la lecture des
+                                discussions des contributions.
+                            </p>
+                            <p>
+                                De même, les messages publiés en doublon ne seront affichés qu'une seule fois.
+                            </p>
+                            <p>
+                                En cas de questions, vous pouvez contacter les équipes de modération en écrivant à
+                                l'adresse <i>moderation@discommentondit.fr</i>
+                            </p>
+                            <h3>6. Puis-je modifier un commentaire ?</h3>
+                            <p>
+                                Une fois votre commentaire publié, il n'est plus possible de l'éditer pour en modifier
+                                le contenu.
+                            </p>
+                            <h3>7. Puis-je critiquer Dis, comment on dit ?</h3>
+                            <p>
+                                Vos commentaires sur les contenus publiés sont acceptés tant qu'ils respectent les
+                                règles évoquées précédemment. Les critiques virulentes et attaques personnelles à
+                                l'encontre de Dis, comment on dit ?, ses dirigeants et autres collaborateurs ne feront
+                                pas l'objet d'une publication.
+                            </p>
+                            <h3>8. Je constate des abus dans les commentaires d'un autre utilisateur, que faire ?</h3>
+                            <p>
+                                Si vous observez un comportement inapproprié ou ne répondant pas aux points évoqués
+                                ci-dessus, vous pouvez le signaler aux équipes de modération en cliquant sur le drapeau
+                                présent sous le commentaire en question. Les équipes de modération examineront alors en
+                                priorité la teneur du propos et pourront procéder, si le caractère inapproprié est
+                                confirmé, à sa suppression.
+                            </p>
+                            <p>
+                                Notez cependant que l'espace de commentaires est un lieu de débat où peuvent intervenir
+                                des divergences d'opinion. Si vous n'êtes pas en accord avec un propos mais que celui-ci
+                                n'enfreint aucune règle de modération, il ne sera pas supprimé.
+                            </p>
+                            <h3>9. J'ai des questions sur la modération</h3>
+                            <p>
+                                Pour toute question sur l'espace des commentaires, contactez l'adresse
+                                <i>moderation@discommentondit.fr</i>.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Single Section -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+</main>
+<script src="{{ asset('assets/js/blog.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+{% endblock %}

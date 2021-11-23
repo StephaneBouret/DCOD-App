@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ma liste
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+    }
+
+    .main-container {
+        padding-top: 0;
+    }
+
+    .card {
+        border: 0;
+        border-radius: 0;
+    }
+
+    .card-img,
+    .card-img-bottom,
+    .card-img-top {
+        border-radius: 0;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<section id="mylist" class="mylist">
+    <div class="container">
+        <div class="section-title">
+            <h2>La liste de {{ user.firstname }}</h2>
+        </div>
+    </div>
+</section>
+<section class="main-container">
+    <div class="location">
+        <div class="container">
+            {% for label, messages in app.flashes %}
+            {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show mt-5 text-center container"
+                id="flashMessage" role="alert">
+                {{ message | raw }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            <div class="row portfolio-container">
+                {% for wish in user.wishlist %}
+                <div class="col-lg-4 col-md-6 portfolio-item">
+                    <div class="portfolio-wrap shadow-1-strong">
+                        <img src="{{ vich_uploader_asset(wish, 'imageFile') | imagine_filter('my_widen_filter') }}"
+                            alt="{{wish.name}}" class="img-fluid">
+                        <div class="portfolio-info">
+                            <h4>{{ wish.name }}</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ path('product', {'slug' : wish.slug }) }}" title="Voir le détail"><i
+                                        class="bx bx-link"></i>
+                                </a>
+                                <form method="POST" action="{{ path('removeList') }}">
+                                    <input type="text" name="id" value="{{ wish.id }}" style="display: none">
+                                    <button title="Supprimer de Ma liste">
+                                        <i class='bx bx-check-circle'></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/portfolio.js') }}" defer></script>
+<script src="{{ asset('assets/isotope-layout/isotope.pkgd.min.js') }}" defer></script>
+{% endblock %}

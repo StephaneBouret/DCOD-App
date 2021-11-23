@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Devenir partenaire{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- ======= Become a partner Section ======= -->
+<section id="become-partner" class="become-partner section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <span>DEVENIR PARTENAIRE</span>
+            <h2>DEVENIR PARTENAIRE</h2>
+            <p>Pourquoi et comment devenir partenaire de l'association ?</p>
+            <p>Au delà des adhérents qui sont un des piliers de l'association, le fonctionnement de <strong>Dis, comment
+                    on dit ?</strong> repose également sur une démarche partenariale. Nos partenaires s'investissent
+                techniquement, financièrement, ou à leur manière. En nous soutenant au quotidien ou ponctuellement, ils
+                sont des éléments essentiels du développement de nos projets.
+            </p>
+        </div>
+        <div class="partner-list">
+            <ul>
+                <li data-aos="fade-up">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#partner-list-1">Soutien financier <i
+                            class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="partner-list-1" class="collapse show" data-bs-parent=".partner-list">
+                        <p>
+                            Vous pouvez choisir de soutenir financièrement l'ensemble des actions de notre association
+                            ou l'un de ses projets qui vous tient plus particulièrement à cœur. C'est grâce à vous que
+                            nous pouvons agir aux côtés de l'école et en soutien des parents pour la réussite des
+                            enfants.
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" data-bs-target="#partner-list-2" class="collapsed">L'arrondi sur
+                        salaire <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="partner-list-2" class="collapse" data-bs-parent=".partner-list">
+                        <p>
+                            L'arrondi sur salaire offre la possibilité à vos salariés de soutenir les actions de notre
+                            association, en réalisant chaque mois des micro-dons en reversant les centimes ou plus, de
+                            leur net à payer en fonction de leur possibilité financière. Ces petites actions solidaires
+                            grâce à la force du collectif,
+                            permettent de créer un impact social significatif et de soutenir de multiples associations
+                            dans la durée.
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" data-bs-target="#partner-list-3" class="collapsed">Mécénat de
+                        compétences <i class="bx bx-chevron-down icon-show"></i><i
+                            class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="partner-list-3" class="collapse" data-bs-parent=".partner-list">
+                        <p>
+                            Nous avons régulièrement besoin de certains produits ou services afin de nous permettre de
+                            réaliser nos projets, d'organiser des événements ou développer l'activité de notre
+                            association. Votre entreprise peut nous aider en mettant à notre disposition son
+                            savoir-faire et ses compétences. Votre participation gracieuse étant considéré comme un don.
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" data-bs-target="#partner-list-4" class="collapsed">Opérations de
+                        produit-partage <i class="bx bx-chevron-down icon-show"></i><i
+                            class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="partner-list-4" class="collapse" data-bs-parent=".partner-list">
+                        <p>
+                            Votre entreprise commercialise un produit ou un service dont une partie des bénéfices est
+                            reversée à notre association. Vous valorisez le produit et/ou la marque auprès de vos
+                            consommateurs et communiquez sur l'engagement que vous prenez aux côtés de notre
+                            association.
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" data-bs-target="#partner-list-5" class="collapsed">Opérations internes
+                        <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="partner-list-5" class="collapse" data-bs-parent=".partner-list">
+                        <p>
+                            Vous souhaitez fédérer et motiver vos salariés autour d'un projet caritatif ? Les opérations
+                            internes, créatrices de liens et de motivation, se multiplient au sein des entreprises.
+                            Elles peuvent prendre la forme de challenges commerciaux ou incentive dont l'objectif est de
+                            collecter des fonds pour l'association, d'événements internes mettant à l'honneur
+                            l'association, de journées de bénévolat durant lesquelles les salariés se mettent à
+                            disposition de l'association.
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <i class="bx bx-help-circle icon-help"></i>
+                    <a data-bs-toggle="collapse" data-bs-target="#partner-list-6" class="collapsed">Dons en nature
+                        <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="partner-list-6" class="collapse" data-bs-parent=".partner-list">
+                        <p>
+                            Le don en nature est un moyen simple et concret de nous apporter votre soutien. Vous pouvez
+                            vous mobiliser en collectant tout ce qui peut être utile à notre association, mais aussi
+                            nous donner de la visibilité, grâce au don d'espaces publicitaires par exemple.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section><!-- Become a partner Section -->
+    <!-- ======= Ctap Section ======= -->
+    <section id="ctap" class="ctap">
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+          <h3>Devenir partenaire</h3>
+          <p>Vous souhaitez que votre entreprise participe financièrement aux actions de l'Association ?</p>
+          <a class="ctap-btn" href="{{ path('contact') }}">Devenir partenaire</a>
+        </div>
+      </div>
+    </section><!-- End Cta Section -->
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-info">
+                        <h3>Dis, comment on dit ?</h3>
+                        <p>
+                            24 boulevard Pablo Picasso <br>
+                            49000 ANGERS<br><br>
+                            <strong>Téléphone :</strong> 06 29 02 54 45<br>
+                            <strong>Email :</strong> contact@discommentondit.fr<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-google-plus-circle"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('home') }}">Accueil</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('about') }}">Qui sommes-nous</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('picture_book') }}">Nos imagiers</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('legal-notices') }}">Mentions
+                                légales</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('prevacy-policy') }}">Politique de
+                                confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Nos services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('support') }}">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            Association Dis, comment on dit ? - 2021 - Tous droits réservés
+        </div>
+        <div class="credits">
+            Réalisé par <a href="https://stephanebouretnouhin.web.app/" target="_blank">SB</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/main.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+{% endblock %}

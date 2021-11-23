@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+	body {
+		position: relative;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	.card {
+		border-radius: 6px;
+		background-color: #181818;
+		box-shadow: rgb(0 0 0 / 75%) 0 3px 10px;
+		color: #fff;
+		max-width: 850px;
+		padding: 0 !important;
+	}
+</style>
+{% endblock %}
+{% block body %}
+<div class="app-container" dir="ltr">
+	<div class="app-cards">
+		<div class="app-hero-card">
+			<div class="app-card-background">
+				<div class="app-img-wrapper">
+					<img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+						class="app-img">
+					<div class="app-img-gradient"></div>
+				</div>
+			</div>
+			<div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+				<div class="card">
+					<div class="previewCard detail-card">
+						<div class="work-img">
+							<img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('my_ratio_down_scale_filter') }}"
+								class="card-img-top" alt="{{ product.illustration }}">
+						</div>
+						<div class="previewTitle">
+							<div class="previewTitleLeft">
+								<div class="buttonControls">
+									<form method="POST" action="{{ path('addDL') }}">
+										<input type="text" name="id" value="{{ product.id }}" style="display: none">
+										<button class="color-download hasDownload hasIcon">
+											<span class="ltr-image">Télécharger</span>
+										</button>
+									</form>
+									<div role="button" class="description__button color-supplementary"
+										data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter à Ma liste">
+										<form method="POST" action="{{ path('addList') }}">
+											<input type="text" name="id" value="{{ product.id }}" style="display: none">
+											<button type="submit" class="btn">
+												<i class="fas fa-plus"></i>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="previewModal-close">
+						<a href="{{ path('category_filter') }}">
+							<i class="fal fa-times"></i>
+						</a>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-8">
+								<h2 class="w-title">{{ product.name }}</h2>
+								<div class="w-more">
+									Tome {{ product.tome }} {{ product.level }}
+									-
+									Page
+									{{ product.page }}
+								</div>
+								{% if product.subtitle %}
+								<div class="w-subtitle">
+									<span class="w-label">Association :</span>
+									<span class="w-ctegory" style="cursor: unset;">
+										{{ product.subtitle }}
+									</span>
+								</div>
+								{% endif %}
+								<div class="w-subtitle">
+									<span class="w-label">Thématiques :</span>
+									<span class="w-ctegory">
+										<a href="{{ path('category', {'slug' : catSlug }) }}">{{ product.category }}
+										</a>
+									</span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="previewCard--tags d-flex align-items-center">
+									<span class="previewCard--tags-label me-1">Voir :</span>
+									<button type="button" class="tag-modal" data-bs-toggle="modal"
+										data-bs-target="#imageModal">
+										<i class="fad fa-camera-retro"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="imageModalLabel">{{ product.name }}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('my_ratio_down_scale_filter') }}"
+						alt="{{ product.illustration }}">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

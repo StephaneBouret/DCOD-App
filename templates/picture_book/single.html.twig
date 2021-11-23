@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos imagiers{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{{ path('picture_book') }}">Nos imagiers</a></li>
+                <li>Imagier {{ singleBook.level }} - Tome {{ singleBook.tome }}</li>
+            </ol>
+            <h2>Details Imagier {{ singleBook.level }} - Tome {{ singleBook.tome }}</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-5 col-lg-8 col-xl-7 offset-xl-1 order-lg-0 order-md-0 order-sm-0 order-last">
+                    <div class="portfolio-info">
+                        <h3>Imagier</h3>
+                        <ul>
+                            <li><strong>Niveau : </strong>{{ singleBook.level }}</li>
+                            <li><strong>Tome : </strong>{{ singleBook.tome }}</li>
+                            <li><strong>Date de parution : </strong>{{ singleBook.publishedAt | date("d/m/Y") }}</li>
+                            <li><strong>Nombre de pages : </strong>{{ singleBook.numberPages }}</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>{{ singleBook.subtitle }}</h2>
+                        <p>
+                            {{ singleBook.description }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3 offset-lg-1 order-lg-1 order-md-1 order-sm-1 order-first">
+                    <div class="portfolio-img">
+                        <img src="{{ vich_uploader_asset(singleBook, 'coverageFile') }}" alt="" class="img-fluid">
+                        <button type="button" class="btn extract" data-bs-toggle="modal" data-bs-target="#imagierModal">
+                            Lire un extrait
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+    <!-- Modal -->
+    <div class="modal fade" id="imagierModal" tabindex="-1" role="dialog" aria-labelledby="imagierModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-0 bg-transparent">
+                <div class="modal-header border-bottom-0">
+                    {# <h5 class="modal-title" id="imagierModalLabel">Modal title</h5> #}
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-0">
+                    <div id="carouselImagierControls" class="carousel slide" data-bs-interval="false"
+                        data-bs-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            {% for key,picture in pictures %}
+                            <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                                <img class="img-responsive" src="{{ vich_uploader_asset(picture, 'pictureFile') }}"
+                                    alt="{{ picture.illustration }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Controls -->
+                        <button class="carousel-control-prev" href="#carouselImagierControls" role="button"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" href="#carouselImagierControls" role="button"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-info">
+                        <h3>Dis, comment on dit ?</h3>
+                        <p>
+                            24 boulevard Pablo Picasso <br>
+                            49000 ANGERS<br><br>
+                            <strong>Téléphone :</strong> 06 29 02 54 45<br>
+                            <strong>Email :</strong> contact@discommentondit.fr<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-google-plus-circle"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('home') }}">Accueil</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('about') }}">Qui sommes-nous</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('picture_book') }}">Nos imagiers</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('legal-notices') }}">Mentions
+                                légales</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('prevacy-policy') }}">Politique de
+                                confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Nos services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ path('support') }}">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            Association Dis, comment on dit ? - 2021 - Tous droits réservés
+        </div>
+        <div class="credits">
+            Réalisé par <a href="https://stephanebouretnouhin.web.app/" target="_blank">SB</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+<script src="{{ asset('assets/js/main.js') }}" defer></script>
+{% endblock %}

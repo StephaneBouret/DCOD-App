@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+        border-radius: 4px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        max-width: 650px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="app-container" dir="ltr">
+    <div class="app-cards">
+        <div class="app-hero-card">
+            <div class="app-card-background">
+                <div class="app-img-wrapper">
+                    <img src="{{ asset('assets/img/pophome-perspective_alpha_website_large.jpg') }}" alt=""
+                        class="app-img">
+                    <div class="app-img-gradient"></div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mt-5 mb-5">
+                <div class="card px-5 py-5">
+                    <form method="post">
+                        {% if error %}
+                        <div class="alert alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% for message in app.flashes('notice') %}
+                        <div class="alert alert-info">{{ message }}</div>
+                        {% endfor %}
+
+                        {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                        {% endif %}
+
+                        <h5 class="h3 mb-3 font-weight-normal text-center">Merci de vous connecter</h5>
+                        <div class="form-input">
+                            <label for="inputEmail">Votre email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                class="form-control" placeholder="Votre email :" autocomplete="email" required
+                                autofocus>
+                        </div>
+                        <div class="form-input">
+                            <label for="inputPassword">Votre mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                placeholder="Votre mot de passe :" autocomplete="current-password" required>
+                            <div class="icon-eye-hide icon-register" title="Afficher le mot de passe"></div>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        {# <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                        <label for="remember_me">Keep me logged in</label> #}
+
+                        <button class="btn login__sign-in" type="submit">
+                            Se connecter
+                        </button>
+                        <hr>
+                        <p class="text-center">
+                            <a href="{{ path('forget_password') }}">Mot de passe oublié ?</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

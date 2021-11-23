@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des imagiers{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #f7f7f7;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <section id="index" class="index">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tous les mots de nos imagiers</h2>
+                <p>Retrouvez les mots de nos imagiers par ordre alphabétique</p>
+            </div>
+            <div class="glossaire-style big">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div id="container-trigger" class="container-fluid">
+                        <button id="glossaire-trigger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span id="togglerIcon" class="navbar-toggler-icon">Filtrer</span>
+                        </button>
+                        <div class="collapse navbar-collapse switchcontent" id="navbarNav">
+                            <ul class="navbar-nav">
+                                {% for alf in alphabet %}
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page"
+                                        href="{{ path('single_glossary', {'slug' : alf.slug }) }}">{{ alf.letter | upper }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <a target="_blank" href="{{ asset('assets/pdf/indexForPictureBook.pdf') }}">
+                                <i class="bx bx-file"></i>
+                            </a>
+                        </div>
+                        <h4><a target="_blank" href="{{ asset('assets/pdf/indexForPictureBook.pdf') }}">Télécharger</a>
+                        </h4>
+                        <p>Retrouvez l'index de nos imagiers au format pdf</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

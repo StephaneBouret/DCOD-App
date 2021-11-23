@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - Réinitialiser mon mot de passe{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">
+                    <a href="{{ path('support_categories') }}">Application</a>
+                </li>
+                <li title="Les questions les plus fréquentes">Les questions les plus fréquentes</li>
+            </ol>
+        </div>
+    </section>
+    <div class="article-container">
+        <section class="article-sidebar" id="accordionArticle">
+            <section class="section-articles collapsible-sidebar">
+                <h3 class="collapsible-sidebar-title sidenav-title ml-10" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Articles dans cette section
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionArticle">
+                    <ul>
+                        <li>
+                            <a href="#" class="sidenav-item current-article">Comment réinitialiser mon mot de passe
+                                ?</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('whyNoReset') }}" class="sidenav-item ">Pourquoi mon lien de réinitialisation de mot de passe ne
+                                fonctionne pas ?</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <article class="article">
+            <header class="article-header">
+                <h1 title="Comment réinitialiser mon mot de passe ?" class="article-title">Comment réinitialiser mon mot
+                    de passe ?
+                </h1>
+            </header>
+            <section class="article-info">
+                <div class="article-content">
+                    <div class="article-body">
+                        <p>
+                            <a href="#firstPart" target="_self">Réinitialiser mon mot de passe depuis la page de
+                                connexion</a>
+                            <br>
+                            <a href="#secondPart" target="_self">Réinitialiser mon mot de passe via le lien de
+                                réinitialisation</a>
+                        </p>
+                        <h2 id="firstPart">
+                            <span class="redColorApp">Réinitialiser mon mot de passe depuis la page de connexion</span>
+                        </h2>
+                        <ul>
+                            <li>
+                                <span class="color-black">Rendez vous sur la page de connexion : <a
+                                        href="https://www.discommentondit.fr/connexion"
+                                        target="_self">https://www.discommentondit.fr/connexion</a></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Cliquez sur <strong>mot de passe oublié ?</strong></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Renseignez votre adresse mail</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Cliquez sur <strong>Valider</strong></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Connectez-vous sur votre boite email et suivez les
+                                    instructions contenues dans l’email <strong>«&nbsp;Réinitialiser votre mot de
+                                        passe...&nbsp;»</strong> qui vous a été envoyé
+                                    par Dis, comment on dit ?. Cliquez sur le lien <strong>mettre à jour votre mot de passe</strong></span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister5.jpg') }}" alt="">
+                        </p>
+                        <p>&nbsp;</p>
+                        <h2 id="secondPart">
+                            <span class="redColorApp">Réinitialiser mon mot de passe via le lien de
+                                réinitialisation</span>
+                        </h2>
+                        <ul>
+                            <li>
+                                <span class="color-black">Cliquez sur le lien <a
+                                        href="https://www.discommentondit.fr/mot-de-passe-oublie"
+                                        target="_self">https://www.discommentondit.fr/mot-de-passe-oublie</a></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Renseignez votre adresse mail</span>
+                            </li>
+                            <li>
+                                <span class="color-black">Cliquez sur <strong>Valider</strong></span>
+                            </li>
+                            <li>
+                                <span class="color-black">Connectez-vous sur votre boite email et suivez les
+                                    instructions contenues dans l’email <strong>«&nbsp;Réinitialiser votre mot de
+                                        passe...&nbsp;»</strong> qui vous a été envoyé
+                                    par Dis, comment on dit ?. Cliquez sur le lien <strong>mettre à jour votre mot de passe</strong></span>
+                            </li>
+                        </ul>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranRegister6.jpg') }}" alt="">
+                        </p>
+                        <p>&nbsp;</p>
+                        <p>Si vous avez suivi toutes ces instructions et que malgré cela vous ne parvenez pas à vous
+                            enregistrer, <a href="https://www.discommentondit.fr/nous-contacter" target="_blank"
+                                rel="noopener noreferrer">contactez-nous</a>.</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+<script src="{{ asset('assets/js/resize.js') }}" defer></script>
+{% endblock %}

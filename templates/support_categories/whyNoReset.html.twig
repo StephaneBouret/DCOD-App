@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - Pourquoi mon lien de réinitialisation de mot de passe ne fonctionne pas ?{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">
+                    <a href="{{ path('support_categories') }}">Application</a>
+                </li>
+                <li title="Les questions les plus fréquentes">Les questions les plus fréquentes</li>
+            </ol>
+        </div>
+    </section>
+    <div class="article-container">
+        <section class="article-sidebar" id="accordionArticle">
+            <section class="section-articles collapsible-sidebar">
+                <h3 class="collapsible-sidebar-title sidenav-title ml-10" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Articles dans cette section
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionArticle">
+                    <ul>
+                        <li>
+                            <a href="{{ path('resetMyPw') }}" class="sidenav-item">Comment réinitialiser mon mot de
+                                passe
+                                ?</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidenav-item current-article">Pourquoi mon lien de réinitialisation de
+                                mot de passe ne
+                                fonctionne pas ?</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <article class="article">
+            <header class="article-header">
+                <h1 title="Pourquoi mon lien de réinitialisation de mot de passe ne
+                                fonctionne pas ?" class="article-title">Pourquoi mon lien de réinitialisation de mot de
+                    passe ne
+                    fonctionne pas ?
+                </h1>
+            </header>
+            <section class="article-info">
+                <div class="article-content">
+                    <div class="article-body">
+                        <p>Pour des raisons de sécurité, les liens de réinitialisation ne sont pas valides dans le
+                            temps, retrouvez dans cet article les solutions pour réussir à bien réinitialiser votre mot
+                            de passe&nbsp;
+                        </p>
+                        <p>&nbsp;</p>
+                        <p>
+                            <a href="#firstPart" target="_self">Combien de temps dure un lien de réinitialisation de mot
+                                de passe?</a>
+                            <br>
+                            <a href="#secondPart" target="_self">Pourquoi le lien de réinitialisation de mot de passe
+                                que j'ai demandé dans l'heure ne fonctionne pas ?</a>
+                        </p>
+                        <h2 id="firstPart">
+                            <span class="redColorApp">Combien de temps dure un lien de réinitialisation de mot de
+                                passe?</span>
+                        </h2>
+                        <p>Les liens de réinitialisation de mot de passe ont pour des raisons de sécurité une validité
+                            de 3 heures.
+                        </p>
+                        <p>Les liens sont utilisables <strong>une seule fois.</strong><br>Si vous tentez de
+                            réinitialiser un lien de mot de passe sur un lien qui n'est plus valide, un message
+                            indiquant que le lien est expiré apparaitra à l'écran. Vous serez redirigé automatiquement
+                            vers la page de réinitialisation de mot de passe.
+                        </p>
+                        <p>&nbsp;</p>
+                        <h2 id="secondPart">
+                            <span class="redColorApp">Pourquoi le lien de réinitialisation de mot de passe
+                                que j'ai demandé dans l'heure ne fonctionne pas ?</span>
+                        </h2>
+                        <p>Pour que le lien soit valide, vous devez utiliser le dernier reçu en date sur votre boite
+                            mail.<br>Si vous demandez plusieurs liens de réinitialisation de mot de passe, vous devez
+                            utiliser le dernier arrivé sur votre boite mail.
+                        </p>
+                        <p>Vous devez vous assurer également que ce lien n'a pas déjà été utilisé, chaque lien est à
+                            usage unique.</p>
+                        <p>&nbsp;</p>
+                        <p>Retrouvez l'article sur <a href="{{ path('resetMyPw') }}" target="_self">comment
+                                réinitialiser son mot de passe.</a></p>
+                        <p>&nbsp;</p>
+                        <p>Si vous avez suivi toutes ces instructions et que malgré cela vous ne parvenez pas à vous
+                            enregistrer, <a href="https://www.discommentondit.fr/nous-contacter" target="_blank"
+                                rel="noopener noreferrer">contactez-nous</a>.</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+<script src="{{ asset('assets/js/resize.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="bg-support">
+    <div class="container-support">
+        <div class="container">
+            <div class="section-title">
+                <span>Support</span>
+                <h2>Support</h2>
+            </div>
+            <div class="row animate fadeInUp">
+                <div class="support-inner">
+                    <p><a href="{{ path('support_categories') }}">En quoi pouvons-nous vous aider ?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

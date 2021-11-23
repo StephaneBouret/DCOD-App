@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ singleBlog.title }}{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    .breadcrumbs a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+
+    .breadcrumbs h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #545454;
+    }
+
+    button.notification {
+        background-color: unset;
+        border-color: unset;
+        color: unset;
+        border-width: 0px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li>
+                    <a href="{{ path('products') }}">Accueil</a>
+                </li>
+                <li><a href="{{ path('blogpost') }}">Blog</a></li>
+            </ol>
+            <h2>{{ singleBlog.title }}</h2>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+                {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+                <div class="col-lg-8 entries">
+                    <article class="entry entry-single">
+                        {% if singleBlog.illustration %}
+                        <div class="entry-img">
+                            <img src="{{ vich_uploader_asset(singleBlog, 'imageFile') | imagine_filter('thumb_mediumblog') }}" alt="" class="img-fluid">
+                        </div>
+                        {% endif %}
+                        <h2 class="entry-title">
+                            {{ singleBlog.title }}
+                        </h2>
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i>
+                                    {{ singleBlog.users.firstname }} {{ singleBlog.users.lastname }}</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                                    <time>{{ singleBlog.createdAt|date('d/m/Y') }}</time>
+                                </li>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>
+                                    {{countComment}}
+                                    {% if countComment >=2 %} Commentaires{% else %} Commentaire{% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry-content">
+                            <p>
+                                {{ singleBlog.content|raw }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mb-3 comment-content">
+                                <a href="#ajout-commentaire" data-reply data-id="0">
+                                    <h4><i class="bi bi-chat-right"></i> Commenter</h4>
+                                </a>
+                                <a href="{{ path('comments_policy') }}">
+                                    <p class="chart">lire la charte <i class="bi bi-chevron-right"></i></p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="entry-footer">
+                            <i class="bi bi-folder"></i>
+                            <ul class="cats">
+                                <li>
+                                    <a
+                                        href="{{ path('category_blog', {'slug' : singleBlog.categoryPost.slug }) }}">{{ singleBlog.categoryPost }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <div class="blog-comments">
+                        <h4 class="comments-count">
+                            {{countComment}}
+                            {% if countComment >=2 %} Commentaires{% else %} Commentaire{% endif %}
+                        </h4>
+                        {% for comment in singleBlog.comments|reverse %}
+                        {% if ( comment.parent == null ) and ( comment.isPublished == true ) %}
+                        <div class="comment">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="d-flex align-items-center">{{ comment.nickname }}
+                                        <a href="#ajout-commentaire" data-reply data-id="{{ comment.id }}"
+                                            class="reply">
+                                            <i class="bi bi-reply-fill"></i>
+                                            Répondre
+                                        </a>
+                                        <div class="ps-3">
+                                            <form method="POST" action="{{ path('notify_comment') }}">
+                                                <input type="text" name="id" value="{{ comment.id }}"
+                                                    style="display: none">
+                                                <button class="notification" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Signaler">
+                                                    <i class="bi bi-flag"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </h5>
+                                    <time>{{comment.createdAt|date("d/m/Y H:i") }}</time>
+                                    <p>
+                                        {{comment.content|raw}}
+                                    </p>
+                                </div>
+                            </div>
+                            {# On affiche les réponses #}
+                            {% for reply in comment.replies %}
+                            {% if reply.isPublished == true %}
+                            <div class="comment comment-reply">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="d-flex align-items-center">
+                                            {{reply.nickname}}
+                                            <div class="ps-3">
+                                                <form method="POST" action="{{ path('notify_comment') }}">
+                                                    <input type="text" name="id" value="{{ reply.id }}"
+                                                        style="display: none">
+                                                    <button class="notification" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Signaler">
+                                                        <i class="bi bi-flag"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </h5>
+                                        <time>{{ reply.createdAt|date("d/m/Y H:i") }}</time>
+                                        <p>
+                                            {{reply.content|raw}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        <div id="ajout-commentaire" class="reply-form">
+                            <h4>Ajouter un commentaire</h4>
+                            <p>Les champs obligatoires sont marqués d'un *</p>
+                            {{ form_start(commentForm) }}
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    {{ form_row(commentForm.nickname) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    {{ form_row(commentForm.content) }}
+                                </div>
+                            </div>
+                            {{ form_end(commentForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Single Section -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+</main>
+<script src="{{ asset('assets/js/blog.js') }}" defer></script>
+<script src="{{ asset('assets/aos/aos.js') }}" defer></script>
+<script>
+    // On met un écouteur d'évènements sur tous les boutons répondre
+    document.querySelectorAll("[data-reply]").forEach(element => {
+        element.addEventListener("click", function () {
+            document.querySelector("#comments_parentid").value = this.dataset.id;
+        })
+    });
+</script>
+{% endblock %}
