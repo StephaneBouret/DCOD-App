@@ -19,9 +19,9 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
-# ###> liip/imagine-bundle ###
-# /public/media/cache/
-# ###< liip/imagine-bundle ###
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
 
 ###> public/uploads ###
 /public/uploads/
