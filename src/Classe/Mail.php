@@ -17,7 +17,7 @@ class Mail
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => "contact@discommentondit.fr",
+                        'Email' => "contact@discommentondit.com",
                         'Name' => "Dis, comment on dit ?"
                     ],
                     'To' => [
