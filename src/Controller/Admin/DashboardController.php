@@ -13,6 +13,7 @@ use App\Entity\BlogPost;
 use App\Entity\Category;
 use App\Entity\CategoryBlog;
 use App\Entity\Comments;
+use App\Entity\Contact;
 use App\Entity\GameFiles;
 use App\Entity\IndexWords;
 use App\Entity\PictureBook;
@@ -56,6 +57,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Blog', 'fas fa-comments', BlogPost::class);
         yield MenuItem::linkToCrud('Catégories du post', 'fas fa-folder-open', CategoryBlog::class);
         yield MenuItem::linkToCrud('Commentaires', 'far fa-comments', Comments::class);
+        yield MenuItem::linkToCrud('Emails', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToRoute('Accueil', 'fas fa-laptop-house', 'products');
         yield MenuItem::linkToLogout('Se déconnecter', 'fas fa-sign-out-alt');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
