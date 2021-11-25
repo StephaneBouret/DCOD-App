@@ -52,7 +52,7 @@ class ContactController extends AbstractController
             $content .= "Email : " . $data['email'] . "<br/>";
             $content .= "Sujet : " . $data['content'];
             $mail = new Mail();
-            $mail->send('contact@discommentondit.fr', 'Administrateur', 'Demande de contact sur l\'application Dis, comment on dit', $content);
+            $mail->send('contact@discommentondit.com', 'Administrateur', 'Demande de contact sur l\'application Dis, comment on dit', $content);
             $this->addFlash('success', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
             unset($form);
             return $this->redirectToRoute('contact');
