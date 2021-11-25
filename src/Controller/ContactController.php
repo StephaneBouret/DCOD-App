@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3Validator;
 
 class ContactController extends AbstractController
 {
@@ -23,7 +24,7 @@ class ContactController extends AbstractController
     }
 
     #[Route('/nous-contacter', name: 'contact')]
-    public function index(Request $request): Response
+    public function index(Request $request, Recaptcha3Validator $recaptcha3Validator): Response
     {
         $newMail = new Contact;
 
@@ -32,6 +33,7 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $score = $recaptcha3Validator->getLastResponse()->getScore();
             
             // Upload du mail en BDD
             $firstname = ucwords($form->get('prenom')->getData());
