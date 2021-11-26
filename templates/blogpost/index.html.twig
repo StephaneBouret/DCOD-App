@@ -69,8 +69,8 @@
                     <article class="entry">
                         {% if data.illustration %}
                         <div class="entry-background">
-                            <img src="{{ vich_uploader_asset(data, 'imageFile') | imagine_filter('thumb_indexblog') }}" alt="{{ data.illustration }}"
-                                class="img-fluid">
+                            <img src="{{ vich_uploader_asset(data, 'imageFile') | imagine_filter('thumb_indexblog') }}"
+                                alt="{{ data.illustration }}" class="img-fluid">
                         </div>
                         {% endif %}
                         <h2 class="entry-title">
@@ -91,9 +91,7 @@
                             </ul>
                         </div>
                         <div class="entry-content">
-                            <p>
-                                {{ data.content|u.truncate(150, '...', false)|raw }}
-                            </p>
+                            {{ data.content|u.truncate(150, '...', false)|raw }}
                             <div class="read-more">
                                 {% if user.id == data.users.id %}
                                 <a href="{{ path('edit_post', {'slug' : data.slug }) }}">Editer</a>

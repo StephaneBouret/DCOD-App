@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Blogpost;
 use App\Entity\CategoryBlog;
 use Doctrine\ORM\EntityRepository;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -30,7 +31,8 @@ class BlogpostType extends AbstractType
                 ]
             ])
             // ->add('slug')
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
+                'config_name' => 'main_config',
                 'label' => false,
                 'required' => true,
                 'attr' => [

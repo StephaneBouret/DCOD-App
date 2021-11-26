@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\BlogPost;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -26,7 +27,7 @@ class BlogPostCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Titre du sujet :'),
             SlugField::new('slug', 'Slug :')->setTargetFieldName('title'),
-            TextareaField::new('content', 'Contenu du post :'),
+            TextareaField::new('content', 'Contenu du post :')->setFormType(CKEditorType::class),
             AssociationField::new('categoryPost', 'Catégories :'),
             TextField::new('imageFile', 'Fichier image :')
                 ->setFormType(VichImageType::class)
@@ -49,9 +50,11 @@ class BlogPostCrudController extends AbstractCrudController
             //   %entity_name%, %entity_as_string%,
             //   %entity_id%, %entity_short_id%
             //   %entity_label_singular%, %entity_label_plural%
+            // ajout dernière ligne pour activer ckeditor + ligne 30 ->setFormType(CKEditorType::class)
             ->setPageTitle('index', 'Sujets :')
             ->setPageTitle('new', 'Créer un post')
             ->setDefaultSort(['id' => 'DESC'])
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
         ;
     }
 }

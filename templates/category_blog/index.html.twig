@@ -30,8 +30,12 @@
         max-height: 110px;
     }
 
-    .blog .entry .entry-content p {
+    .blog .entry .entry-content .ckeditor {
         height: 96px;
+    }
+
+    .blog .entry .entry-content p {
+        margin-bottom: 0.5rem;
     }
 </style>
 {% endblock %}
@@ -89,11 +93,11 @@
                             </ul>
                         </div>
                         <div class="entry-content">
-                            <p>
+                            <div class="ckeditor">
                                 {{ all.content|u.truncate(150, '...', false)|raw }}
-                            </p>
-                            <div class="read-more">
-                                <a href="{{ path('single_post', {'slug' : all.slug }) }}">En savoir plus</a>
+                                <div class="read-more">
+                                    <a href="{{ path('single_post', {'slug' : all.slug }) }}">En savoir plus</a>
+                                </div>
                             </div>
                         </div>
                     </article>
