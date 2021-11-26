@@ -48,9 +48,9 @@ class UpdateUserType extends AbstractType
                 'default_region' => 'FR',
                 'format' => PhoneNumberFormat::NATIONAL,
                 'label' => 'Votre téléphone :',
-                'required' => true,
+                'required' => false,
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre téléphone'
+                    'placeholder' => 'Merci de saisir votre téléphone (facultatif)'
                 ]
             ])
             ->add('submit', SubmitType::class, [
