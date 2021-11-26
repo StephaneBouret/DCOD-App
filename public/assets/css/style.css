@@ -4772,6 +4772,36 @@ section#services {
     color: #e96b56;
 }
 
+.blog .entry .entry-content blockquote {
+    overflow: hidden;
+    background-color: #fafafa;
+    padding: 60px;
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.blog .entry .entry-content blockquote p {
+    color: #444444;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.blog .entry .entry-content blockquote::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #545454;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .blog .entry .entry-content .read-more {
     -moz-text-align-last: right;
     text-align-last: right;
