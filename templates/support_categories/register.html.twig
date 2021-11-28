@@ -46,6 +46,11 @@
                         <li>
                             <a href="#" class="sidenav-item current-article">M'enregistrer sur l'application</a>
                         </li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li>
+                            <a href="{{ path('accessTopics') }}" class="sidenav-item">Accès aux thématiques</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </section>
@@ -124,7 +129,7 @@
                         <p>Vous avez la possibilité de vous enregistrer via la page Inscription.</p>
                         <p>&nbsp;</p>
                         <p>Via le lien lien suivant: <a
-                                href="https://www.discommentondit.fr/inscription">https://www.discommentondit.fr/inscription</a>
+                                href="https://www.discommentondit.com/inscription">https://www.discommentondit.com/inscription</a>
                         </p>
                         <ul>
                             <li>
@@ -133,7 +138,7 @@
                             </li>
                         </ul>
                         <p>Si vous avez suivi toutes ces instructions et que malgré cela vous ne parvenez pas à vous
-                            enregistrer, <a href="https://www.discommentondit.fr/nous-contacter" target="_blank"
+                            enregistrer, <a href="https://www.discommentondit.com/nous-contacter" target="_blank"
                                 rel="noopener noreferrer">contactez-nous</a>.</p>
                     </div>
                 </div>

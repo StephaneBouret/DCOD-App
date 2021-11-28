@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Support - Me connecter à mon compte{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #212529;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section class="breadcrumbs-support">
+        <div class="container">
+            <ol>
+                <li title="Support Dis, comment on dit ?">
+                    <a href="{{ path('support') }}">Support</a>
+                </li>
+                <li title="Application">
+                    <a href="{{ path('support_categories') }}">Application</a>
+                </li>
+                <li title="Premiers pas">Premiers pas</li>
+            </ol>
+        </div>
+    </section>
+    <div class="article-container">
+        <section class="article-sidebar" id="accordionArticle">
+            <section class="section-articles collapsible-sidebar">
+                <h3 class="collapsible-sidebar-title sidenav-title ml-10" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Articles dans cette section
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionArticle">
+                    <ul>
+                        <li>
+                            <a href="{{ path('register_help') }}" class="sidenav-item">M'enregistrer sur
+                                l'application</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidenav-item current-article">Accès aux thématiques</a>
+                        </li>
+                        {# <li>
+                            <a href="{{ path('changeParameters') }}" class="sidenav-item ">Modifier mes paramètres personnels</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('changeEmail') }}" class="sidenav-item ">Changer mon adresse email</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('changeMyPw') }}" class="sidenav-item ">Changer mon mot de passe</a>
+                        </li> #}
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <article class="article">
+            <header class="article-header">
+                <h1 title="Me connecter à mon compte" class="article-title">Accès aux thématiques
+                </h1>
+            </header>
+            <section class="article-info">
+                <div class="article-content">
+                    <div class="article-body">
+                        <p><em>Dans cet article nous allons traiter des sujets suivants :&nbsp;</em></p>
+                        <p>
+                            <a href="#firstPart" target="_self">Présentation de la page</a>
+                            <br>
+                            <a href="#secondPart" target="_self">Recherche d'une image</a>
+                            <br>
+                            <a href="#thirdPart" target="_self">Accès à une image</a>
+                            <br>
+                            <a href="#fourthPart" target="_self">Télécharger une image</a>
+                        </p>
+                        <h2 id="firstPart">
+                            <span class="redColorApp">Présentation de la page</span>
+                        </h2>
+                        <p>
+                            Cette page est scindée en deux parties.
+                            <br>
+                            La partie de gauche est réservée à la recherche. La partie de droite affiche les résultats.
+                            <br>
+                            Il est important de comprendre que lorsque vous arrivez sur cette page et ce, avant toutes
+                            requêtes, l'application vous envoie 30 images aléatoires qui changent à chaque
+                            raffraichissement de page. Le but est d'éviter des temps de chargement trop importants.
+                            <br>
+                            Sur cette page, chaque image a une <strong>taille réduite</strong> donc inappropriée pour le
+                            téléchargement.
+                            Ce point sera traité en dernier.
+                        </p>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranTopics1.webp') }}" alt="" class="img-fluid">
+                        </p>
+                        <p>&nbsp;</p>
+                        <h2 id="secondPart">
+                            <span class="redColorApp">Recherche d'une image</span>
+                        </h2>
+                        <p>
+                            La recherche s'effectue dans le panneau de gauche. Pour rechercher une image, vous avez
+                            trois possibilités :
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="color-black"><strong>La recherche par mot</strong></span>
+                                <ul style="margin-top: 0; margin-bottom: 0;">
+                                    <li>Pour cela, il suffit de taper une ou plusieurs lettres, la recherche se
+                                        réalisant en autocomplétion.</li>
+                                    <li>Dans notre exemple, nous allons taper les lettres "ferm" afin de trouver le mot
+                                        "fermier".
+                                        <br>
+                                        Plusieurs choix vous sont proposés. Il vous suffit de cliquer sur le mot
+                                        correspondant.
+                                        <br>
+                                        Une fois le mot cliqué, vous pouvez effectuer une autre requête supplémentaire.
+                                    </li>
+                                    <p>
+                                        <img src="{{ asset('assets/img/captureEcranTopics2.webp') }}" alt=""
+                                            class="img-fluid">
+                                    </p>
+                                    <li>
+                                        Votre ou vos images sont sélectionnées, pour y accéder il suffit de cliquer sur
+                                        le bouton "chercher".
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="color-black"><strong>La recherche par thème</strong></span>
+                                <ul style="margin-top: 0; margin-bottom: 0;">
+                                    <li>Cette recherche obéit aux mêmes principes pour la recherche par mot.</li>
+                                    <li>
+                                        Ici, nous recherchons les mots et images qui appartiennent à une thématique
+                                        définie.
+                                        <br>
+                                        Dans notre exemple, nous allons rechercher tous les éléments appartenant à la
+                                        catégorie "les fruits et les légumes".
+                                        <br>
+                                        Nous tapons les premières lettres, à savoir "frui". Le moteur de recherche nous
+                                        propose deux entrées. Nous choisissons la première et nous cliquons sur
+                                        "chercher" afin d'afficher toutes les images correspondantes.
+                                        <br>
+                                        Il est possible de filtrer les images par niveau, comme de sélectionner d'autres
+                                        catégories.
+                                    </li>
+                                    <p>
+                                        <img src="{{ asset('assets/img/captureEcranTopics3.webp') }}" alt=""
+                                            class="img-fluid">
+                                    </p>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="color-black"><strong>La recherche phonologique</strong></strong></span>
+                                <ul style="margin-top: 0; margin-bottom: 0;">
+                                    <li>
+                                        L'objectif est de chercher les images contenant les lettres tapées dans la barre
+                                        de recherche.
+                                        <br>
+                                        Par exemple, si nous tapons "fra", le moteur de recherche va afficher toutes les
+                                        images dont le nom contient "fra"
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h2 id="thirdPart">
+                            <span class="redColorApp">Accès à une image</span>
+                        </h2>
+                        <p>
+                            Pour accéder à l'image, il suffit de survoler l'image. Au survol, plusieurs éléments
+                            apparaissent :
+                        </p>
+                        <p>
+                            <img src="{{ asset('assets/img/captureEcranTopics4.webp') }}" alt="" class="img-fluid">
+                        </p>
+                        <ul>
+                            <li>
+                                Le nom de l'image
+                            </li>
+                            <li>Le niveau auquel est rattachée l'image</li>
+                            <li>Un bouton <i class="bx bx-plus-circle"></i> afin d'enregistrer l'image dans votre liste
+                            </li>
+                            <li>Un bouton <i class="bx bx-link"></i> pour voir le détail de l'image et surtout la
+                                télécharger</li>
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h2 id="fourthPart">
+                            <span class="redColorApp">Télécharger une image</span>
+                        </h2>
+                        <p>Pour des questions d'ergonomie, toutes les images ont un format réduit peu propice à une
+                            future exploitation.
+                            <br>
+                            Afin de bénéficier d'une haute résolution, il suffit, au survol de l'image de cliquer sur le
+                            bouton lien.
+                        </p>
+                        <p>
+                            <p>
+                                <img src="{{ asset('assets/img/captureEcranTopics5.webp') }}" alt="" class="img-fluid">
+                            </p>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+<script src="{{ asset('assets/js/resize.js') }}" defer></script>
+{% endblock %}

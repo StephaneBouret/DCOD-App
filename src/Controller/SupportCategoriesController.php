@@ -61,4 +61,11 @@ class SupportCategoriesController extends AbstractController
     {
         return $this->render('support_categories/changeMyPw.html.twig');
     }
+
+    #[Route('/support/acces-aux-thematiques', name: 'accessTopics')]
+    public function accessTopics(): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        return $this->render('support_categories/accessTopics.html.twig');
+    }
 }

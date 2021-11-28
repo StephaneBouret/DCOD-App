@@ -39,10 +39,12 @@
                     <ul class="article-list">
                         <li class="article-list-item">
                             <i class="fad fa-star"></i>
-                            <a href="{{ path('resetMyPw') }}" class="article-list-link">Comment réinitialiser mon mot de passe ?</a>
+                            <a href="{{ path('resetMyPw') }}" class="article-list-link">Comment réinitialiser mon mot de
+                                passe ?</a>
                         </li>
                         <li class="article-list-item">
-                            <a href="{{ path('whyNoReset') }}" class="article-list-link">Pourquoi mon lien de réinitialisation de mot de passe
+                            <a href="{{ path('whyNoReset') }}" class="article-list-link">Pourquoi mon lien de
+                                réinitialisation de mot de passe
                                 ne fonctionne pas ?</a>
                         </li>
                     </ul>
@@ -52,8 +54,14 @@
                     <ul class="article-list">
                         <li class="article-list-item">
                             <i class="fad fa-star"></i>
-                            <a href="{{ path('register_help') }}" class="article-list-link">M'enregistrer sur l'application</a>
+                            <a href="{{ path('register_help') }}" class="article-list-link">M'enregistrer sur
+                                l'application</a>
                         </li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="article-list-item">
+                            <a href="{{ path('accessTopics') }}" class="article-list-link">Accès aux thématiques</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </section>
                 <section class="section">
@@ -63,10 +71,12 @@
                             <a href="{{ path('myAccount') }}" class="article-list-link">Me connecter à mon compte</a>
                         </li>
                         <li class="article-list-item">
-                            <a href="{{ path('disconnect') }}" class="article-list-link">Me déconnecter de mon compte</a>
+                            <a href="{{ path('disconnect') }}" class="article-list-link">Me déconnecter de mon
+                                compte</a>
                         </li>
                         <li class="article-list-item">
-                            <a href="{{ path('changeParameters') }}" class="article-list-link">Modifier mes paramètres personnels</a>
+                            <a href="{{ path('changeParameters') }}" class="article-list-link">Modifier mes paramètres
+                                personnels</a>
                         </li>
                         <li class="article-list-item">
                             <a href="{{ path('changeEmail') }}" class="article-list-link">Changer mon adresse email</a>
