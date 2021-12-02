@@ -32,7 +32,7 @@ class StripeController extends AbstractController
         Stripe::setApiKey('sk_test_51K1uk1GfT2FwntXckSmSg67n6TIEgmnVvymyHM3mvHtfDKvwcWSXzJVARHpvLhJgLX4ce7VpU2BUwQ1mY6nL7DKC00w0AwHBCb');
         
         $products_for_stripe = [];
-        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        $YOUR_DOMAIN = 'https://www.discommentondit.com/';
 
         $order = $entityManager->getRepository(Order::class)->findOneBy(array('reference' => $reference));
         
