@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - Dis, comment on dit ?{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    header {
+        height: 70px;
+    }
+
+    a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div id="main">
+    <section class="recap-order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ma commande</h2>
+            </div>
+            <div>
+                <p>
+                    Historique de votre paiement<br />
+                    <a href="{{ path('account') }}">Retour</a>
+                </p>
+            </div>
+            <div class="row mt-4 justify-content-center">
+                <div id="no-more-tables">
+                    <table class="col-md-12 table">
+                        <thead class="cf">
+                            <tr>
+                                <th scope="col">Référence</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Créé le</th>
+                                <th scope="col">Payé le</th>
+                                <th scope="col">Prix total</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary">{{ order.reference }}</span>
+                                </td>
+                                <td>
+                                    {% if order.isPaid == true %}
+                                    <i class="bi bi-check-circle-fill"></i> Payé
+                                    {% endif %}
+                                </td>
+                                <td>{{ order.createdAt|date('d/m/Y') }}</td>
+                                <td>{{ order.createdAt|date('d/m/Y') }}</td>
+                                <td>{{ ((order.getTotal) / 100)|number_format(2, ',', '.') }}
+                                    €</td>
+                                <td class="text-right">
+                                    <a href="{{ path('account_order_show', { 'reference' : order.reference }) }}">Voir ma commande</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

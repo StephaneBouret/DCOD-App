@@ -2,28 +2,32 @@
 
 namespace App\Controller;
 
-use App\Entity\Order;
+use App\Entity\Plan;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AccountController extends AbstractController
+class PricingController extends AbstractController
 {
+    /* INJECTION DE DEPENDANCE*/
     private $entityManager;
-
+    
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
     
-    #[Route('/compte', name: 'account')]
+    #[Route('/tarifs', name: 'pricing')]
     public function index(): Response
     {
-        $orders = $this->entityManager->getRepository(Order::class)->findSuccessOrders($this->getUser());
-        
-        return $this->render('account/index.html.twig', [
-            'orders' => $orders,
+        $data = $this->entityManager->getRepository(Plan::class)->findAll();
+        $dateNow = new \DateTime();
+
+        return $this->render('pricing/index.html.twig', [
+            'data' => $data,
+            'dateNow' => $dateNow
         ]);
     }
 }

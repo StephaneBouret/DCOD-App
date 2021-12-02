@@ -16,7 +16,9 @@ use App\Entity\Comments;
 use App\Entity\Contact;
 use App\Entity\GameFiles;
 use App\Entity\IndexWords;
+use App\Entity\Order;
 use App\Entity\PictureBook;
+use App\Entity\Plan;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -51,6 +53,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Ecoles', 'fas fa-school', School::class);
         yield MenuItem::linkToCrud('Imagiers', 'fas fa-book-open', PictureBook::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-camera', Images::class);
+        yield MenuItem::linkToCrud('Abonnements', 'fab fa-cc-stripe', Plan::class);
+        yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Order::class);
         yield MenuItem::linkToCrud('Alphabet', 'fas fa-font', Alphabet::class);
         yield MenuItem::linkToCrud('Index', 'fas fa-indent', IndexWords::class);
         yield MenuItem::linkToCrud('Jeux', 'fas fa-dice', GameFiles::class);

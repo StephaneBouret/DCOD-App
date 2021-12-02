@@ -69,6 +69,7 @@ class SitemapController extends AbstractController
         $urls[] = ['loc' => $this->generateUrl('support_us')];
         $urls[] = ['loc' => $this->generateUrl('become_partner')];
         $urls[] = ['loc' => $this->generateUrl('mylist')];
+        $urls[] = ['loc' => $this->generateUrl('pricing')];
 
         foreach ($blogPostRepository->findAll() as $blogPost) {
             $urls[] = [

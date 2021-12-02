@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - - Dis, comment on dit ?
+{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+	body {
+		position: relative;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		background-color: #FFFFFF;
+		color: #212529;
+	}
+
+	header {
+		height: 70px;
+	}
+
+	a {
+		color: #e96b56;
+		text-decoration: none;
+	}
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+	<section class="recap-order">
+		<div class="container">
+			<div class="section-title">
+				<h2>Détail de ma commande</h2>
+			</div>
+			<div class="row">
+				<h5>Ma commande {{ order.reference }}</h5>
+				<a href="{{ path('account_order') }}" class="mb-2">Retour</a>
+				<hr>
+				<p>
+					<strong>Statut de la commande :</strong>
+					{% if order.isPaid == true %}
+					Paiement accepté
+					{% endif %}
+				</p>
+				<p><strong>Commande passée le :</strong> {{ order.createdAt|date('d/m/Y') }}</p>
+				<p><strong>Référence de ma commande :</strong>
+					<small>{{ order.reference }}</small><br /></p>
+				<hr>
+				<div id="no-more-tables">
+					<table class="table mt-4">
+						<thead>
+							<tr>
+								<th scope="col">Produit</th>
+								<th scope="col">Quantité</th>
+								<th scope="col">Prix unitaire</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product in order.orderDetails %}
+							<tr>
+								<td>{{ product.product }}</td>
+								<td>x{{ product.quantity }}</td>
+								<td>{{ (product.price / 100)|number_format(2, ',', '.') }}
+									€</td>
+								<td>{{ (product.total / 100)|number_format(2, ',', '.') }}
+									€</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="row justify-content-end block-history">
+					<div class="col-md-6 text-end payment-history">
+						<strong>Sous-total :</strong>
+						{{ (order.getTotal / 100)|number_format(2, ',', '.') }}
+						€<br />
+						<strong>Total :
+						</strong>
+						{{ ((order.getTotal) / 100)|number_format(2, ',', '.') }}
+						€
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}

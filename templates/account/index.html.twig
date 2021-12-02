@@ -69,6 +69,22 @@
                             </div>
                         </div>
                     </div>
+                    {% if orders %}                    
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
+                        <div class="col mb-4">
+                            <div class="card dropdownCard">
+                                <div class="card-body px-0">
+                                    <a href="{{ path('account_order') }}" class="insideCard-item">
+                                        <span class="d-inline-block text-center">
+                                            <i class="icon-app icon-circle-profile font-24 align-middle"></i>
+                                        </span>
+                                        Ma commande
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

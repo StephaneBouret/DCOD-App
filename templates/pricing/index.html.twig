@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos tarifs{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li>Tarifs</li>
+            </ol>
+            <h2>Abonnements à l'application</h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="row no-gutters">
+            {% for plan in data %}
+                <div class="col-lg-4 limp {{ plan.isBest==true ? 'featured' : '' }}">
+                    <h3>{{ plan.name }}</h3>
+                    <h4>{{ ((plan.price / 100)/(plan.duration))|number_format(2, ',', '.') }} €<span>EUR / mois</span></h4>
+                    <div class="pt-see-all text-h-dark">{{ plan.duration }} mois</div>
+                    <ul>
+                        <li><i class="bx bx-check"></i> Accès aux images de tous les imagiers</li>
+                        <li><i class="bx bx-check"></i> Recherche intuitive et filtres multi-niveaux</li>
+                        <li><i class="bx bx-check"></i> Accès à l'index</li>
+                        <li><i class="bx bx-check"></i> Accès aux jeux (Loto, oie, intrus)</li>
+                        <li><i class="bx bx-check"></i> Accès au blog</li>
+                    </ul>
+                    <a href="{{ path('add_to_cart', { 'id' : plan.id }) }}" class="buy-btn">Ajouter au panier</a>
+                    <p class="text-center text-h-gray mt-3">Fin de l'abonnement le {{ dateNow|date_modify("+" ~ plan.duration ~ " month")|date("d/m/Y") }}</p>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+    </section><!-- End Pricing Section -->
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-info">
+                        <h3>Dis, comment on dit ?</h3>
+                        <p>
+                            24 boulevard Pablo Picasso
+                            <br>
+                            49000 ANGERS<br><br>
+                            <strong>Téléphone :</strong>
+                            06 29 02 54 45<br>
+                            <strong>Email :</strong>
+                            contact@discommentondit.com<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                            <a href="#" class="google-plus">
+                                <i class="bx bxl-google-plus-circle"></i>
+                            </a>
+                            <a href="#" class="linkedin">
+                                <i class="bx bxl-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('home') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('about') }}">Qui sommes-nous</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('picture_book') }}">Nos imagiers</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('legal-notices') }}">Mentions
+                                légales</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('prevacy-policy') }}">Politique de
+                                confidentialité</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Nos services</h4>
+                    <ul>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('support') }}">Support</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="{{ path('pricing') }}">Tarifs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            Association Dis, comment on dit ? - 2021 - Tous droits réservés
+        </div>
+        <div class="credits">
+            Réalisé par
+            <a href="https://stephanebouretnouhin.web.app/" target="_blank">SB</a>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+{% endblock %}

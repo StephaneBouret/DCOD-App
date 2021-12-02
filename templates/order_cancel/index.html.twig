@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de paiement - Dis, comment on dit ?{% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    header {
+        height: 70px;
+    }
+
+    a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <section id="check-order" class="check-order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Erreur de paiement</h2>
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="icon-box w-100">
+                    <p>Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong></p>
+                    <p>Vous rencontrez des difficultés à finaliser votre paiement sur notre plateforme pour votre
+                        commande n° <span class="badge bg-secondary">{{ order.reference }}</span></p>
+                    <p>
+                        <a href="{{ path('order_recap') }}" class="btn btn-success">Réessayer le paiement</a>
+                    </p>
+                    <p><strong>L'équipe de Dis, comment on dit ?</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

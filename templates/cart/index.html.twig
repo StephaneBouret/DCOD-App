@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier - Dis, comment on dit ?{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+    body {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #FFFFFF;
+        color: #212529;
+    }
+
+    a {
+        color: #e96b56;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li>Mon panier</li>
+            </ol>
+            <h2>Mon panier</h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section class="bag">
+        <div class="container">
+            <div class="row no-gutters">
+                {% if cart|length > 0 %}
+                <h3>Vous y êtes presque !</h3>
+                <div class="col-12">
+                    <div class="cart-summary border p-20 border-radius-6">
+                        <ul>
+                            <h4>Votre accès à l'application :</h4>
+                            {% set total = null %}
+                            {% for product in cart %}
+                            <li class="d-flex justify-content-between align-items-center mb-10">
+                                <div class="pt-features text-h-gray">{{ product.product.name }} <small>- Durée de
+                                        {{ product.product.duration }} mois</small></div>
+                                <div class="pt-see-all text-h-dark summary-old">
+                                    {{ (product.product.price / 100)|number_format(2, ',', '.') }} €
+                                    <span class="icon-trash">
+                                        <a href="{{ path('delete_to_cart', { 'id' : product.product.id }) }}">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </li>
+                            {% set total = total + (product.product.price * product.quantity) %}
+                            {% endfor %}
+                        </ul>
+                        <hr class="mt-20 mb-20">
+                        <div class="d-sm-flex justify-content-between align-items-center mb-10">
+                            <div class="pt-title text-h-dark">Nombre de produit :</div>
+                            <div class="d-flex align-items-center">
+                                <span class="pt-title text-h-dark">{{ cart|length }}</span>
+                            </div>
+                        </div>
+                        <div class="d-sm-flex justify-content-between align-items-center mb-10">
+                            <div class="pt-title text-h-dark">Total :</div>
+                            <div class="d-flex align-items-center">
+                                <span class="pt-title text-h-dark">{{ (total / 100)|number_format(2, ',', '.') }}
+                                    €</span>
+                            </div>
+                        </div>
+                        <hr class="mt-20 mb-20">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-5">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center mb-10">
+                                    <a href="{{ path('order_recap') }}" class="w-100 text-white btn btn-pay p-20 border-radius-6 border-0">Valider mon panier</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                                <div class="d-flex align-items-center secure mb-10">
+                                    <i class="fas fa-lock-alt mr-10"></i>
+                                    <p class="text-h-gray f-body">Paiements sécurisés et cryptés</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-12 mb-40 justify-content-center d-flex">
+                    <img src="{{ asset('assets/img/empty-cart.png') }}" alt="Panier vide">
+                </div>
+                <div class="col-12 text-center">
+                    <h1 class="fw-700 mb-30">Il semble que le panier est vide</h1>
+                    <p class="text-content-grey subtitle">Aucun problème, trouvons un abonnement qui conviendra le mieux
+                        à votre projet.</p>
+                </div>
+                <div class="text-center justify-content-center d-flex col-12">
+                <a href="{{ path('pricing') }}" class="h-button mw-260 max-w-260 pt-10 pb-10 button m-box-shadow ripple-white button">Revenir aux tarifs</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}

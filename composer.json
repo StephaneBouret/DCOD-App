@@ -22,6 +22,7 @@
         "odolbeau/phone-number-bundle": "^3.5",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.1",
+        "stripe/stripe-php": "^7.103",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
