@@ -2866,7 +2866,8 @@ span.count-text {
 
 .skills .section-title h2,
 .why-us .section-title h2,
-.our-findings .section-title h2 {
+.our-findings .section-title h2,
+.clients .section-title h2 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -2877,7 +2878,8 @@ span.count-text {
 
 .skills .section-title h2::after,
 .why-us .section-title h2::after,
-.our-findings .section-title h2::after {
+.our-findings .section-title h2::after,
+.clients .section-title h2::after {
     content: "";
     position: absolute;
     display: block;
@@ -3219,11 +3221,16 @@ section#why-us {
 }
 
 .clients {
-    background: #f2f2f2;
-    padding: 15px 0;
+    /* background: #f2f2f2; */
+    padding: 0 0 80px 0;
     text-align: center;
     overflow: hidden;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
+}
+
+.clients .section-title {
+    text-align: center;
+    padding: 0;
 }
 
 .clients img {
@@ -5750,7 +5757,8 @@ input#comments_rgpd:checked {
     border: 1px solid #ddd;
 }
 
-.table td, .table th {
+.table td,
+.table th {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
@@ -5771,7 +5779,7 @@ input#comments_rgpd:checked {
 }
 
 .recap-order .table tbody i {
-    color: #00b090!important;
+    color: #00b090 !important;
 }
 
 @media only screen and (max-width: 800px) {
@@ -5838,6 +5846,7 @@ input#comments_rgpd:checked {
     padding: 16px 24px;
     border-radius: 8px;
 }
+
 /*--------------------------------------------------------------
 # Page Contact
 --------------------------------------------------------------*/
