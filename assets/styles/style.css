@@ -2867,7 +2867,8 @@ span.count-text {
 .skills .section-title h2,
 .why-us .section-title h2,
 .our-findings .section-title h2,
-.clients .section-title h2 {
+.clients .section-title h2,
+.supporter .section-title h2 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -2879,7 +2880,8 @@ span.count-text {
 .skills .section-title h2::after,
 .why-us .section-title h2::after,
 .our-findings .section-title h2::after,
-.clients .section-title h2::after {
+.clients .section-title h2::after,
+.supporter .section-title h2::after {
     content: "";
     position: absolute;
     display: block;
@@ -3222,13 +3224,29 @@ section#why-us {
 
 .clients {
     /* background: #f2f2f2; */
-    padding: 0 0 80px 0;
+    padding: 0 0 60px 0;
     text-align: center;
     overflow: hidden;
     /* margin-bottom: 60px; */
 }
 
-.clients .section-title {
+.supporter {
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cliens {
+    padding: 12px 0;
+    text-align: center;
+}
+
+.cliens.section-bg {
+    background-color: #f3f5fa;
+}
+
+.clients .section-title,
+.supporter .section-title {
     text-align: center;
     padding: 0;
 }
