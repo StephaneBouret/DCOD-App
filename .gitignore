@@ -26,3 +26,8 @@
 ###> public/uploads ###
 /public/uploads/
 ###< public/uploads ###
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
