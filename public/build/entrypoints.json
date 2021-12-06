@@ -3,12 +3,20 @@
     "app": {
       "js": [
         "/build/runtime.73ad9136.js",
-        "/build/457.9577c3f2.js",
-        "/build/app.88629f1a.js"
+        "/build/591.47bc3488.js",
+        "/build/961.30d4d690.js",
+        "/build/app.e6a4d3e9.js"
       ],
       "css": [
-        "/build/457.0ffde981.css",
+        "/build/961.0ffde981.css",
         "/build/app.22ebb1af.css"
+      ]
+    },
+    "fontawesome": {
+      "js": [
+        "/build/runtime.73ad9136.js",
+        "/build/591.47bc3488.js",
+        "/build/fontawesome.3d755c0f.js"
       ]
     }
   }
