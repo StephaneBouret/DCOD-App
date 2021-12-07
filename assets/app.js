@@ -17,3 +17,6 @@ import './glightbox/css/glightbox.min.css';
 // start the Stimulus application
 import './bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import purecounter.js
+import '@srexi/purecounterjs/dist/purecounter';

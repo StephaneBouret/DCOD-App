@@ -18,6 +18,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@srexi/purecounterjs": "^1.2.1",
         "bootstrap": "^5.1.3"
     }
 }
