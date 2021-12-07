@@ -63,6 +63,7 @@ class CategoryController extends AbstractController
             // $products = $this->entityManager->getRepository(Product::class)->findAll();
             // $products = $this->entityManager->getRepository(Product::class)->getPaginatedImages($page, $limit);
             // With PaginatorInterface
+            $this->addFlash('danger', 'Les contenus sont soumis au droit de propriété intellectuelle et l\'utilisateur doit considérer que tous les droits sont "réservés".');
             $products = $paginatorInterface->paginate($data, $request->query->getInt('page', 1), $limit);
         }
 
