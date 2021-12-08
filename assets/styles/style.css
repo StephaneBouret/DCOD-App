@@ -2438,6 +2438,30 @@ button.tag-modal {
     color: #444444;
 }
 
+.filter .downloadCount {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.filter .downloadCount .title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: #e50914;
+}
+
+.filter .downloadCount .numberDl {
+    line-height: 24px;
+    font-size: 16px;
+    color: #444444;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 0;
+}
+
 /*--------------------------------------------------------------
 # Page Home (index)
 --------------------------------------------------------------*/

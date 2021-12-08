@@ -174,7 +174,7 @@ class ProductController extends AbstractController
         $mostDownload = $this->entityManager->getRepository(Product::class)->findOneBy(['id' => $slug]);
         $mostDownload->setLikes($mostDownload->getLikes() + 1);
         if ($role[0] === "ROLE_USER") {
-            if ($nbrDownload >= 0 && $nbrDownload < 101) {
+            if ($nbrDownload >= 0 && $nbrDownload < 151) {
                 $download->setDownload($download->getDownload() + 1);
                 $this->entityManager->persist($download);
                 $this->entityManager->persist($mostDownload);

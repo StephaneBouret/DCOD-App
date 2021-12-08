@@ -47,6 +47,9 @@ class CategoryController extends AbstractController
         // On récupère le nombre total d'images
         $total = $this->entityManager->getRepository(Product::class)->getTotalImages($filterString, $filters, $filtersLevel, $filtersTags);
 
+        // On récupère le nombre de téléchargement de l'utilisateur connecté
+        $nbrDl = $this->getUser()->getDownload();
+        
         $search = new Search;
         // $form = $this->createForm(SearchType::class, $search, ['csrf_protection' => false]);
         // With PaginatorInterface
@@ -70,7 +73,8 @@ class CategoryController extends AbstractController
         // With PaginatorInterface
         return $this->render('category/thematique.html.twig', [
             'products' => $products,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'nbrDl' => $nbrDl
         ]);
         
         // return $this->render('category/index.html.twig', [
