@@ -79,6 +79,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $orders;
 
+    /**
+     * Date/Time of the last activity
+     * @var \Datetime
+     * @ORM\Column(type="datetime")
+     */
+    private $lastActivityAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
     public function __construct()
     {
         $this->wishlist = new ArrayCollection();
@@ -325,6 +337,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLastActivityAt(): ?\DateTimeInterface
+    {
+        return $this->lastActivityAt;
+    }
+
+    public function setLastActivityAt(\DateTimeInterface $lastActivityAt): self
+    {
+        $this->lastActivityAt = $lastActivityAt;
+
+        return $this;
+    }
+
+    /**
+    * @return Bool Whether the user is active or not
+    */
+    public function isActiveNow()
+    {
+        // Delay during wich the user will be considered as still active
+        $delay = new \DateTime('2 minutes ago');
+
+        return ( $this->getLastActivityAt() > $delay );
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }
