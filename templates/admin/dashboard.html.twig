@@ -1,8 +1,122 @@
 {% extends "@EasyAdmin/layout.html.twig" %}
+{% block configured_stylesheets %}
+{{ encore_entry_link_tags('app') }}
+<style type="text/css">
+    body {
+        background-color: var(--body-bg);
+        color: var(--text-color);
+        font-family: var(--font-family-base);
+        font-size: var(--font-size-base);
+    }
 
+    #main-menu .menu .menu-item {
+        margin: 0;
+    }
+
+    .card {
+        margin-bottom: 30px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
+        overflow: hidden;
+    }
+
+    .dashboard .info-card {
+        padding-bottom: 10px;
+    }
+
+    .card-body {
+        padding: 0 20px 20px 20px;
+    }
+
+    .card-title {
+        padding: 20px 0 15px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #012970;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .dashboard .card-icon {
+        font-size: 32px;
+        line-height: 0;
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+
+    .dashboard .users-card .card-icon {
+        color: #ff771d;
+        background: #ffecdf;
+    }
+
+    .dashboard .info-card h6 {
+        font-size: 28px;
+        color: #012970;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <div class="jumbotron">
     <h1 class="display-4">Administration</h1>
     <p class="lead">Bienvenue dans l'interface d'administration de votre site internet</p>
+    <section class="dashboard">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card users-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Utilisateurs connectés
+                                </h5>
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ countUser }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Dernières activités :</h5>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prénom</th>
+                                            <th scope="col">Date de dernière connexion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for list in listUserActivity %}                                       
+                                        <tr>
+                                            <td>{{ list.lastname }}</td>
+                                            <td>{{ list.firstname }}</td>
+                                            <td>{{ list.lastActivityAt|date("d/m/Y\ H:i:s") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}

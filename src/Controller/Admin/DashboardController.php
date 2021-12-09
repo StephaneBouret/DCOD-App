@@ -2,23 +2,24 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Plan;
 use App\Entity\User;
 use App\Entity\Level;
+use App\Entity\Order;
 use App\Entity\Header;
 use App\Entity\Images;
 use App\Entity\School;
+use App\Entity\Contact;
 use App\Entity\Product;
 use App\Entity\Alphabet;
 use App\Entity\BlogPost;
 use App\Entity\Category;
-use App\Entity\CategoryBlog;
 use App\Entity\Comments;
-use App\Entity\Contact;
 use App\Entity\GameFiles;
 use App\Entity\IndexWords;
-use App\Entity\Order;
 use App\Entity\PictureBook;
-use App\Entity\Plan;
+use App\Entity\CategoryBlog;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -27,13 +28,25 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
         // return parent::index();
-        return $this->render('admin/dashboard.html.twig');
+        $countUser = $this->entityManager->getRepository(User::class)->countUsersConnected();
+        $listUserActivity = $this->entityManager->getRepository(User::class)->listUsersLastActivity();
+        return $this->render('admin/dashboard.html.twig', [
+            'countUser' => $countUser,
+            'listUserActivity' => $listUserActivity
+        ]);
     }
 
     public function configureDashboard(): Dashboard

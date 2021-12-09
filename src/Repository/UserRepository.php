@@ -49,6 +49,28 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getResult()
         ;
     }
+    
+    public function countUsersConnected(): int
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.isValid = true')
+            ->andWhere('u.isActive = true')
+            ->select('COUNT(u)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
+    public function listUsersLastActivity()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.isValid = true')
+            ->andWhere('u.lastActivityAt != 0')
+            ->orderBy('u.lastActivityAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?User

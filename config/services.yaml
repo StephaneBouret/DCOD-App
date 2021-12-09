@@ -30,3 +30,11 @@ services:
       arguments: ['@vich_uploader.storage.file_system', '@liip_imagine.cache.manager']
       tags:
           - { name: kernel.event_subscriber }
+  App\EventListener\ActivityListener:
+      tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+  App\EventListener\LogoutListener:
+        tags:
+            - name: kernel.event_listener
+              event: 'Symfony\Component\Security\Http\Event\LogoutEvent'
+              dispatcher: security.event_dispatcher.main
