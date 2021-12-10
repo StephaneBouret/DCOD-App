@@ -33,8 +33,3 @@ services:
   App\EventListener\ActivityListener:
       tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
-  App\EventListener\LogoutListener:
-        tags:
-            - name: kernel.event_listener
-              event: 'Symfony\Component\Security\Http\Event\LogoutEvent'
-              dispatcher: security.event_dispatcher.main
