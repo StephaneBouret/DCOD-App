@@ -34,7 +34,6 @@ class ActivityListener
 
             if ( ($user instanceof User) && !($user->isActiveNow()) ) {
                 $user->setLastActivityAt(new \DateTime());
-                $user->setIsActive(true);
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
             }
