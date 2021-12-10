@@ -36,6 +36,12 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+            remember_me:
+                name: SECURITY_DEMO
+                secret: '%kernel.secret%'
+                lifetime: 259200 # 3 days in seconds
+                token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:

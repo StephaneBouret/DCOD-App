@@ -33,3 +33,5 @@ services:
   App\EventListener\ActivityListener:
       tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+  
+  Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~

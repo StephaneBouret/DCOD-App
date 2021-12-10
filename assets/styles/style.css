@@ -2178,12 +2178,14 @@ button.tag-modal {
     }
 }
 
-.location .form-check-input:checked {
+.location .form-check-input:checked,
+.app-container .form-check-input:checked {
     background-color: #e50914;
     border-color: #e50914;
 }
 
-.location .form-check-input:focus {
+.location .form-check-input:focus,
+.app-container .form-check-input:focus {
     outline: 0;
     box-shadow: none;
     border-color: transparent;
