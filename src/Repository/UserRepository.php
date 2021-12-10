@@ -52,9 +52,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     
     public function countUsersConnected(): int
     {
+        $delay = new \DateTime('2 minutes ago');
         return $this->createQueryBuilder('u')
             ->andWhere('u.isValid = true')
-            ->andWhere('u.isActive = true')
+            ->andWhere('u.lastActivityAt > :delay')
+            ->setParameter('delay', $delay)
             ->select('COUNT(u)')
             ->getQuery()
             ->getSingleScalarResult()
