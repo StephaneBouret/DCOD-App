@@ -86,11 +86,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $lastActivityAt;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isActive;
-
     public function __construct()
     {
         $this->wishlist = new ArrayCollection();
@@ -362,17 +357,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $delay = new \DateTime('2 minutes ago');
 
         return ( $this->getLastActivityAt() > $delay );
-    }
-
-    public function getIsActive(): ?bool
-    {
-        return $this->isActive;
-    }
-
-    public function setIsActive(bool $isActive): self
-    {
-        $this->isActive = $isActive;
-
-        return $this;
     }
 }
