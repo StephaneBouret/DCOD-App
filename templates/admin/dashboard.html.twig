@@ -147,6 +147,29 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Images les plus téléchargées :</h5>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Niveau</th>
+                                            <th scope="col">Téléchargements</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for popular in popularImg %}
+                                        <tr>
+                                            <td class="align-middle">{{ popular.name }}</td>
+                                            <td class="align-middle">{{ popular.level }}</td>
+                                            <td class="align-middle">{{ popular.likes }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
