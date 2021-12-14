@@ -51,6 +51,7 @@ class UserCrudController extends AbstractCrudController
         $resendRegistrationMail  = Action::NEW('resendRegistrationMail', 'Renvoi du mail d\'enregistrement', 'fas fa-reply')->linkToCrudAction('resendRegistrationMail');
         return $actions
             ->add(Crud::PAGE_EDIT, $resendRegistrationMail)
+            ->disable(Action::NEW);
         ;
     }
 
