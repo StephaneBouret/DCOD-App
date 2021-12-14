@@ -10,6 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -23,7 +25,7 @@ class AccountEditController extends AbstractController
     }
     
     #[Route('/compte/edit', name: 'account_edit')]
-    public function index(Request $request, UserPasswordHasherInterface $encoder): Response
+    public function index(Request $request, UserPasswordHasherInterface $encoder, ValidatorInterface $validator): Response
     {
         $user = $this->getUser();
         $form = $this->createForm(UpdateUserType::class, $user);
@@ -50,6 +52,19 @@ class AccountEditController extends AbstractController
         if ($form2->isSubmitted() && $form2->isValid()) {
             $actual_password = $form2->get('password_for_email')->getData();
             $new_email = $form2->get('new_email')->getData();
+            $emailConstraint = new Assert\Email();
+            $emailConstraint->message = 'L\'email ' . $new_email . ' n\'est pas une adresse email valide';
+
+            // utilisation du validator afin de valider la valeur
+            $errors = $validator->validate(
+                $new_email,
+                $emailConstraint
+            );
+            
+            if ($errors->count()) {
+                $this->addFlash('danger', $emailConstraint->message);
+                return $this->redirectToRoute('account_edit');
+            }
 
             $user_found = $this->entityManager->getRepository(User::class)->findOneByEmail($new_email);
             if ($user_found) {

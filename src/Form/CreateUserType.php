@@ -6,7 +6,6 @@ use App\Entity\User;
 use libphonenumber\PhoneNumberFormat;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -44,7 +43,6 @@ class CreateUserType extends AbstractType
             'attr' => [
                 'placeholder' => 'Merci de saisir votre adresse email'
             ],
-            'constraints' => new Email(),
         ])
         ->add('phone_number', PhoneNumberType::class, [
             'default_region' => 'FR',

@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -37,8 +36,7 @@ class ChangeEmailType extends AbstractType
                     'class' => 'form-control form-register effect-17 has-content newmail',
                     'autocomplete' => 'off'
                 ]
-            ],
-            'constraints' => new Email(),
+            ]
         ])
         ->add('password_for_email', PasswordType::class, [
             'label' => 'Mon mot de passe actuel',
