@@ -25,6 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -56,6 +57,7 @@ class DashboardController extends AbstractDashboardController
 
     /**
      * @Route("/admin/remise-zero-download/{id}", name="download_restock")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function restock($id): Response
     {
