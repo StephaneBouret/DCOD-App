@@ -40,6 +40,7 @@ class ContactCrudController extends AbstractCrudController
             //   %entity_label_singular%, %entity_label_plural%
             ->setPageTitle('index', 'Messages :')
             ->setDefaultSort(['id' => 'DESC'])
+            ->setEntityLabelInSingular('Messages')
         ;
     }
 

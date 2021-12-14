@@ -25,7 +25,10 @@ class ProductCrudController extends AbstractCrudController
     {
         return $crud
             ->setDefaultSort(['name' => 'ASC'])
-            ->setPaginatorPageSize(10);
+            ->setPaginatorPageSize(10)
+            ->setPageTitle('index', 'Produits :')
+            ->setPageTitle('new', 'Créer Produits')
+            ->setEntityLabelInSingular('Produits');
     }
 
     public function configureFields(string $pageName): iterable

@@ -24,7 +24,10 @@ class GameFilesCrudController extends AbstractCrudController
     {
         return $crud
             ->setDefaultSort(['name' => 'ASC'])
-            ->setPaginatorPageSize(10);
+            ->setPaginatorPageSize(10)
+            ->setPageTitle('index', 'Jeux :')
+            ->setPageTitle('new', 'Créer Jeux')
+            ->setEntityLabelInSingular('Jeux');
     }
 
     public function configureFields(string $pageName): iterable

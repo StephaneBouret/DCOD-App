@@ -102,13 +102,47 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {% for list in listUserActivity %}                                       
+                                        {% for list in listUserActivity %}
                                         <tr>
                                             <td>{{ list.lastname }}</td>
                                             <td>{{ list.firstname }}</td>
                                             <td>{{ list.lastActivityAt|date("d/m/Y\ H:i:s") }}</td>
                                         </tr>
-                                    {% endfor %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Top 20 téléchargements :</h5>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prénom</th>
+                                            <th scope="col">Nombre de téléchargement</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for download in listAllUserByDl %}
+                                        <tr>
+                                            <td class="align-middle">{{ download.lastname }}</td>
+                                            <td class="align-middle">{{ download.firstname }}</td>
+                                            <td class="align-middle">{{ download.download }}</td>
+                                            <td class="align-middle">
+                                                <a href="{{ path('download_restock', {'id' : download.id }) }}"
+                                                    title="Remise à zéro">
+                                                    <button type="button" class="btn btn-secondary">
+                                                        <i class="bx bx-reset"></i> Reset
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

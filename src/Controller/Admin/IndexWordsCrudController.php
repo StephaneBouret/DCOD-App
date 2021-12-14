@@ -20,7 +20,10 @@ class IndexWordsCrudController extends AbstractCrudController
     {
         return $crud
             ->setDefaultSort(['title' => 'ASC'])
-            ->setPaginatorPageSize(10);
+            ->setPaginatorPageSize(10)
+            ->setPageTitle('index', 'Index :')
+            ->setPageTitle('new', 'Créer Index')
+            ->setEntityLabelInSingular('Index');
     }
 
     public function configureFields(string $pageName): iterable

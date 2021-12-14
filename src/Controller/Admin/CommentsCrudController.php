@@ -46,6 +46,7 @@ class CommentsCrudController extends AbstractCrudController
             //   %entity_label_singular%, %entity_label_plural%
             ->setPageTitle('index', 'Commentaires :')
             ->setPageTitle('edit', 'Modifier le Commentaire :')
+            ->setEntityLabelInSingular('Commentaires')
         ;
     }
 

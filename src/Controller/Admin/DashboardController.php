@@ -24,15 +24,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
     private $entityManager;
+    private $adminUrlGenerator;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, AdminUrlGenerator $adminUrlGenerator)
     {
         $this->entityManager = $entityManager;
+        $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
     /**
@@ -43,10 +46,27 @@ class DashboardController extends AbstractDashboardController
         // return parent::index();
         $countUser = $this->entityManager->getRepository(User::class)->countUsersConnected();
         $listUserActivity = $this->entityManager->getRepository(User::class)->listUsersLastActivity();
+        $listAllUserByDl = $this->entityManager->getRepository(User::class)->findAllUserByDownload();
         return $this->render('admin/dashboard.html.twig', [
             'countUser' => $countUser,
-            'listUserActivity' => $listUserActivity
+            'listUserActivity' => $listUserActivity,
+            'listAllUserByDl' => $listAllUserByDl
         ]);
+    }
+
+    /**
+     * @Route("/admin/remise-zero-download/{id}", name="download_restock")
+     */
+    public function restock($id): Response
+    {
+        $resetDownload = $this->entityManager->getRepository(User::class)->findOneBy(['id' => $id]);
+        $resetDownload->setDownload(0);
+        $this->entityManager->persist($resetDownload);
+        $this->entityManager->flush();
+
+        $this->addFlash('success', 'La remise à zéro des téléchargements de ' . $resetDownload->getFirstname() . ' ' . $resetDownload->getLastname() . ' est bien effectuée');
+        
+        return $this->redirectToRoute('admin');
     }
 
     public function configureDashboard(): Dashboard

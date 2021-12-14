@@ -33,6 +33,7 @@ class CategoryBlogCrudController extends AbstractCrudController
             //   %entity_label_singular%, %entity_label_plural%
             ->setPageTitle('index', 'Catégories du post :')
             ->setPageTitle('new', 'Créer une catégorie')
+            ->setEntityLabelInSingular('Catégories du post')
         ;
     }
 }

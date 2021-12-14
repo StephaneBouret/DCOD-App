@@ -40,6 +40,7 @@ class PlanCrudController extends AbstractCrudController
             // ajout dernière ligne pour activer ckeditor + ligne 30 ->setFormType(CKEditorType::class)
             ->setPageTitle('index', 'Abonnements :')
             ->setPageTitle('new', 'Créer un abonnement')
+            ->setEntityLabelInSingular('Abonnements')
         ;
     }
 }

@@ -41,6 +41,7 @@ class SchoolCrudController extends AbstractCrudController
             ->setPageTitle('index', 'Ecoles :')
             ->setPageTitle('edit', 'Modifier l\'école :')
             ->setPageTitle('new', 'Créer une école :')
+            ->setEntityLabelInSingular('Ecoles')
         ;
     }
 }

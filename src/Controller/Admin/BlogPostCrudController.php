@@ -53,6 +53,7 @@ class BlogPostCrudController extends AbstractCrudController
             // ajout dernière ligne pour activer ckeditor + ligne 30 ->setFormType(CKEditorType::class)
             ->setPageTitle('index', 'Sujets :')
             ->setPageTitle('new', 'Créer un post')
+            ->setEntityLabelInSingular('Sujets')
             ->setDefaultSort(['id' => 'DESC'])
             ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
         ;
