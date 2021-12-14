@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Email;
 
 class RegisterType extends AbstractType
 {
@@ -41,7 +42,8 @@ class RegisterType extends AbstractType
             'required' => true,
             'attr' => [
                 'placeholder' => 'Merci de saisir votre adresse email'
-            ]
+            ],
+            'constraints' => new Email()
         ])
         ->add('password', RepeatedType::class, [
             'type' => PasswordType::class,
