@@ -40,11 +40,16 @@ class GameFilesController extends AbstractController
         $download = $this->entityManager->getRepository(User::class)->findOneBy(['id' => $id]);
         $nbrDownload = $download->getDownload();
         $role = $download->getRoles();
+        // Ajout d'une méthode : incrémenter le download dans la BDD en fonction du download (games les + téléchargés)
+        $slug = $request->request->all();
+        $mostDownload = $this->entityManager->getRepository(GameFiles::class)->findOneBy(['id' => $slug]);
+        $mostDownload->setDownload($mostDownload->getDownload() + 1);
 
         if ($role[0] === "ROLE_USER") {
-            if ($nbrDownload >= 0 && $nbrDownload < 101) {
+            if ($nbrDownload >= 0 && $nbrDownload < 151) {
                 $download->setDownload($download->getDownload() + 1);
                 $this->entityManager->persist($download);
+                $this->entityManager->persist($mostDownload);
                 $this->entityManager->flush();
                 return $downloadHandler->downloadObject($game, $fileField = 'pdfFile');
             } else {

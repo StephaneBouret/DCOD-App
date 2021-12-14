@@ -49,11 +49,13 @@ class DashboardController extends AbstractDashboardController
         $listUserActivity = $this->entityManager->getRepository(User::class)->listUsersLastActivity();
         $listAllUserByDl = $this->entityManager->getRepository(User::class)->findAllUserByDownload();
         $popularImg = $this->entityManager->getRepository(Product::class)->popularFilter();
+        $popularGames = $this->entityManager->getRepository(GameFiles::class)->popularFilter();
         return $this->render('admin/dashboard.html.twig', [
             'countUser' => $countUser,
             'listUserActivity' => $listUserActivity,
             'listAllUserByDl' => $listAllUserByDl,
-            'popularImg' => $popularImg
+            'popularImg' => $popularImg,
+            'popularGames' => $popularGames
         ]);
     }
 

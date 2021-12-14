@@ -19,6 +19,22 @@ class GameFilesRepository extends ServiceEntityRepository
         parent::__construct($registry, GameFiles::class);
     }
 
+    /**
+     * Returns games with download greater than 3 and sorted by descending likes
+     * @return GameFiles[] Returns an array of Product objects
+     */
+    public function popularFilter()
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.download > :val')
+            ->setParameter('val', 2)
+            ->orderBy('g.download', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return GameFiles[] Returns an array of GameFiles objects
     //  */

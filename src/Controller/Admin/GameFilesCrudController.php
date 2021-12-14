@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -53,7 +54,8 @@ class GameFilesCrudController extends AbstractCrudController
                     'Jeu de l\'oie' => 'oie',
                     'Jeu de l\'intrus' => 'intrus'
             ]),
-            AssociationField::new('level', 'Niveau :')
+            AssociationField::new('level', 'Niveau :'),
+            IntegerField::new('download', 'Téléchargements :')
         ];
     }
 }

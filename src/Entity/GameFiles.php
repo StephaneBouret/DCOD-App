@@ -73,6 +73,11 @@ class GameFiles
      */
     private $updatedFileAt;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $download;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +211,18 @@ class GameFiles
     public function setUpdatedFileAt(\DateTimeInterface $updatedFileAt): self
     {
         $this->updatedFileAt = $updatedFileAt;
+
+        return $this;
+    }
+
+    public function getDownload(): ?int
+    {
+        return $this->download;
+    }
+
+    public function setDownload(?int $download): self
+    {
+        $this->download = $download;
 
         return $this;
     }

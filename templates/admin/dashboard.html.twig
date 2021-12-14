@@ -170,6 +170,29 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Jeux les plus téléchargés :</h5>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Niveau</th>
+                                            <th scope="col">Téléchargements</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for game in popularGames %}
+                                        <tr>
+                                            <td class="align-middle">{{ game.name }}</td>
+                                            <td class="align-middle">{{ game.level }}</td>
+                                            <td class="align-middle">{{ game.download }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
