@@ -43,6 +43,11 @@ class OrderDetails
      */
     private $total;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $duration;
+
     public function __toString()
     {
         return $this->getProduct() . ' x' . $this->getQuantity();
@@ -109,6 +114,18 @@ class OrderDetails
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): self
+    {
+        $this->duration = $duration;
 
         return $this;
     }
