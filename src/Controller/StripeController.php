@@ -29,10 +29,8 @@ class StripeController extends AbstractController
     {
         $session = $this->requestStack->getSession();
         $user = $session->get('user');
-        // Clé API test :
-        // Stripe::setApiKey('sk_test_51K1uk1GfT2FwntXckSmSg67n6TIEgmnVvymyHM3mvHtfDKvwcWSXzJVARHpvLhJgLX4ce7VpU2BUwQ1mY6nL7DKC00w0AwHBCb');
-        Stripe::setApiKey('pk_live_51K1uk1GfT2FwntXcUZ0gvyRHPlDmREPAeDLZjmL8dnnYkkw644sDu8XiL0jUn5hmBxp405RCL3fUP6Py0Heyzzc200NBVIhHXi');
-
+        Stripe::setApiKey('sk_test_51K1uk1GfT2FwntXckSmSg67n6TIEgmnVvymyHM3mvHtfDKvwcWSXzJVARHpvLhJgLX4ce7VpU2BUwQ1mY6nL7DKC00w0AwHBCb');
+        
         $products_for_stripe = [];
         $YOUR_DOMAIN = 'https://www.discommentondit.com/';
 
@@ -43,7 +41,7 @@ class StripeController extends AbstractController
         }
 
         foreach ($cart->getfull() as $product) {
-            $stripe = new StripeClient('pk_live_51K1uk1GfT2FwntXcUZ0gvyRHPlDmREPAeDLZjmL8dnnYkkw644sDu8XiL0jUn5hmBxp405RCL3fUP6Py0Heyzzc200NBVIhHXi');
+            $stripe = new StripeClient('sk_test_51K1uk1GfT2FwntXckSmSg67n6TIEgmnVvymyHM3mvHtfDKvwcWSXzJVARHpvLhJgLX4ce7VpU2BUwQ1mY6nL7DKC00w0AwHBCb');
             $stripe->products->create(['name' => $product['product']->getName()]);
             $idPrice = $stripe->products->create(['name' => $product['product']->getName()])->id;
             
