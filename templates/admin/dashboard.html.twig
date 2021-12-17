@@ -106,7 +106,7 @@
                                         <tr>
                                             <td>{{ list.lastname }}</td>
                                             <td>{{ list.firstname }}</td>
-                                            <td>{{ list.lastActivityAt|date("d/m/Y\ H:i:s") }}</td>
+                                            <td>{{ list.lastActivityAt|date("d/m/Y\ H:i:s", "Europe/Paris") }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

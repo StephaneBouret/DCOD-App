@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    {% if orders %}                    
+                    {% if orders %}
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
                         <div class="col mb-4">
                             <div class="card dropdownCard">
@@ -85,6 +85,28 @@
                         </div>
                     </div>
                     {% endif %}
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
+                        <div class="col mb-1">
+                            <p class="d-inline">
+                                {% if isValid == true %}
+                                Actif
+                                {% else %}
+                                Inactif
+                                {% endif %}
+                            </p>
+                            <small class="ms-1 me-1">|</small>
+                            <p class="d-inline">Créé le : {{ createdAt|date("d/m/Y", "Europe/Paris") }}</p>
+                        </div>
+                        <div class="col mb-1">
+                            <p class="d-inline">
+                                {% if is_granted('ROLE_ADMIN') == false %}
+                                Expire le :{{ date1Year | date("d/m/Y H:i:s", "Europe/Paris") }}
+                                {% else %}
+                                Expire le : Jamais
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

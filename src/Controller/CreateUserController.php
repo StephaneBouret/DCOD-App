@@ -26,6 +26,7 @@ class CreateUserController extends AbstractController
     {
         $user = new User;
         $form = $this->createForm(CreateUserType::class, $user);
+        $date = new \DateTime();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,6 +44,7 @@ class CreateUserController extends AbstractController
                 $user->setIsValid($valid);
                 $download = 0;
                 $user->setDownload($download);
+                $user->setCreatedAt($date);
 
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
