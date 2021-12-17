@@ -45,6 +45,7 @@ class OrderSuccessController extends AbstractController
             // Modifier le statut isPaid de notre commande en mettant true
             $order->setIsPaid(true);
             $userInDB->setIsValid(true);
+            $userInDB->setCreatedAt(new \DateTime());
             $this->entityManager->flush();
 
             // Vider toutes les sessions

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateInterval;
 use App\Entity\Order;
+use App\Entity\OrderDetails;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,7 +28,17 @@ class AccountController extends AbstractController
         $isValid = $userActive->getIsValid();
         $role = $userActive->getRoles();
         $date1Year = clone $createdAt;
-        $date1Year->add(new DateInterval('P1Y'));
+        // Modification de la méthode pour le calcul de la date de fin d'abonnement
+        if (!$orders) {
+            $date1Year->add(new DateInterval('P1Y'));
+        } else {
+            foreach ($orders as $order) {
+                $orderId = $order->getId();
+                $detailById = $this->entityManager->getRepository(OrderDetails::class)->findOrderDetailsById($orderId);
+                $duration = $detailById[0]->getDuration();
+                $date1Year->add(new DateInterval('P'.$duration.'M'));
+            }
+        }
         
         return $this->render('account/index.html.twig', [
             'orders' => $orders,
