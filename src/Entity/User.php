@@ -88,6 +88,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $lastActivityAt;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->wishlist = new ArrayCollection();
@@ -359,5 +364,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $delay = new \DateTime('2 minutes ago');
 
         return ( $this->getLastActivityAt() > $delay );
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
     }
 }
