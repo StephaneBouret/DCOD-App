@@ -30,7 +30,8 @@ class ForgetPasswordController extends AbstractController
         }
 
         if ($request->get('email')) {
-            $user = $this->entityManager->getRepository(User::class)->findOneByEmail($request->get('email'));
+            $email = $request->get('email');
+            $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
             if ($user) {
                 $accountValidated = $user->getIsValid();
 
@@ -74,7 +75,7 @@ class ForgetPasswordController extends AbstractController
     #[Route('/modifier-mon-mot-de-passe/{token}', name: 'update_password')]
     public function update(Request $request, $token, UserPasswordHasherInterface $encoder)
     {
-        $forget_password = $this->entityManager->getRepository(ForgetPassword::class)->findOneByToken($token);
+        $forget_password = $this->entityManager->getRepository(ForgetPassword::class)->findOneBy(['token' => $token]);
 
         if (!$forget_password) {
             return $this->redirectToRoute('forget_password');

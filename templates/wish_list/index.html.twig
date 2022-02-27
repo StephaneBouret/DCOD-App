@@ -54,7 +54,7 @@
                         <div class="portfolio-info">
                             <h4>{{ wish.name }}</h4>
                             <div class="portfolio-links">
-                                <a href="{{ path('product', {'slug' : wish.slug }) }}" title="Voir le détail"><i
+                                <a href="{{ path('product', {'slug' : wish.slug, 'url' : url }) }}" title="Voir le détail"><i
                                         class="bx bx-link"></i>
                                 </a>
                                 <form method="POST" action="{{ path('removeList') }}">

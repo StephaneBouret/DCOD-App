@@ -23,10 +23,14 @@ class WishListController extends AbstractController
     }
 
     #[Route('/ma-liste', name: 'mylist')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $url = $this->generateUrl('mylist');
         if ($this->getUser()) {
-            return $this->render('wish_list/index.html.twig', ['user' => $this->getUser()]);
+            return $this->render('wish_list/index.html.twig', [
+                'user' => $this->getUser(),
+                'url' => $url
+            ]);
         }
     }
 

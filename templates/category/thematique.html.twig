@@ -74,7 +74,7 @@
 					</section>
 					{% endif %}
 					{% for product in products %}
-					{% include "category/single_product.html.twig" with {product: product} only %}
+					{% include "category/single_product.html.twig" with {product: product, url: url} only %}
 					{% endfor %}
 				</div>
 				<div class="d-flex justify-content-left">

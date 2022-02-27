@@ -38,8 +38,16 @@ class ProductController extends AbstractController
     }
 
     #[Route('/image/{slug}', name: 'product')]
-    public function show($slug): Response
+    public function show($slug, Request $request): Response
     {
+        $url = $request->get('url');
+        if (is_null($url) || $url === "") {
+            $url = "/categories";
+        }
+        if ($url === "/ma-liste") {
+            $url = "/ma-liste";
+        }
+
         $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
         $catSlug = $product->getCategory()->getSlug();
 
@@ -53,7 +61,8 @@ class ProductController extends AbstractController
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
-            'catSlug' => $catSlug
+            'catSlug' => $catSlug,
+            'url' => $url
         ]);
     }
 

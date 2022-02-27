@@ -57,10 +57,13 @@ class CategoryController extends AbstractController
 
         $form->handleRequest($request);
 
+        $url = "";
+
         if ($form->isSubmitted() && $form->isValid()) {
             // $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search, $page, $limit);
             // With PaginatorInterface
             $results = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
+            $url = $request->getRequestUri();
             $products = $paginatorInterface->paginate($results, $request->query->getInt('page', 1), $limit);
         } else {
             // $products = $this->entityManager->getRepository(Product::class)->findAll();
@@ -74,7 +77,8 @@ class CategoryController extends AbstractController
         return $this->render('category/thematique.html.twig', [
             'products' => $products,
             'form' => $form->createView(),
-            'nbrDl' => $nbrDl
+            'nbrDl' => $nbrDl,
+            'url' => $url
         ]);
         
         // return $this->render('category/index.html.twig', [
