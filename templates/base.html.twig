@@ -117,10 +117,10 @@
 						</li>
 						{% endif %}
 						{% if is_granted('IS_ANONYMOUS') %}
-						<li class="nav-item">
+						{# <li class="nav-item">
 							<a class="nav-link {{ app.request.get('_route') == 'pricing' ? 'active' }}"
 								aria-current="page" href="{{ path('pricing') }}">Tarifs</a>
-						</li>
+						</li> #}
 						<li class="nav-item">
 							<a class="nav-link {{ app.request.get('_route') == 'support_us' ? 'active' }}"
 								aria-current="page" href="{{ path('support_us') }}">Nous soutenir</a>
@@ -189,11 +189,11 @@
 						</div>
 					</div>
 					{% endif %}
-					{% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and not is_granted('IS_AUTHENTICATED_FULLY') %}
+					{# {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and not is_granted('IS_AUTHENTICATED_FULLY') %}
 					<a href="{{ path('cart') }}">
 						<img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="Mon panier">
 					</a>
-					{% endif %}
+					{% endif %} #}
 				</div>
 			</div>
 		</nav>
